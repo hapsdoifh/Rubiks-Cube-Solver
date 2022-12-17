@@ -13,6 +13,7 @@ class CubeFace{
             RowB.blockRef[i] = face[2][i];
         }
     }
+    int direction = 1;
     oneBlock[][] face = new oneBlock[3][3];
     ThreeBlock ColumnL = new ThreeBlock();
     ThreeBlock ColumnR = new ThreeBlock();
