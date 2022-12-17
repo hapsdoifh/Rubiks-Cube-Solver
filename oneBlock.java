@@ -1,4 +1,4 @@
 
 public class oneBlock{
-    int color = 0;
+    String color = "";
 }

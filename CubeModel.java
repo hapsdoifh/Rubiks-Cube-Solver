@@ -56,22 +56,52 @@ public class CubeModel {
             for(int i = 0; i<3; i++){
                 toMove.blockRef[i].color = copy[i].color;
             }
-        }else{ //back       
-            oneBlock[] copy = new oneBlock[3];
-            for(int i = 0; i<3; i++){      
-                copy[i] = new oneBlock();             
-                copy[i].color = toMove.blockRef[i].color;
-            }
-            do{
-                for(int i = 0; i<3; i++){
-                    toMove.blockRef[i].color = toMove.adjA.blockRef[i].color;
+            //move related face      
+            oneBlock[][] cpy = new oneBlock[3][3];
+            CubeFace tempFace = toMove.adjFace;
+            for(int i = 0; i<3; i++){             
+                for(int j = 0; j<3; j++){
+                    cpy[i][j] = new oneBlock();
+                    cpy[i][j].color = tempFace.face[i][j].color;
                 }
-                toMove = toMove.adjB;
-            }while(toMove != origin.adjB);            
-            for(int i = 0; i<3; i++){
-                toMove.blockRef[i].color = copy[i].color;
             }
+            for(int i =0; i<3;i++){
+                tempFace.face[i][0].color = cpy[0][2-i].color;
+                tempFace.face[0][i].color = cpy[i][2].color;
+                tempFace.face[i][2].color = cpy[2][2-i].color;
+                tempFace.face[2][i].color = cpy[i][0].color;
+            }            
         }
+        // else{ //back       
+        //     oneBlock[] copy = new oneBlock[3];
+        //     for(int i = 0; i<3; i++){      
+        //         copy[i] = new oneBlock();             
+        //         copy[i].color = toMove.blockRef[i].color;
+        //     }
+        //     do{
+        //         for(int i = 0; i<3; i++){
+        //             toMove.blockRef[i].color = toMove.adjA.blockRef[i].color;
+        //         }
+        //         toMove = toMove.adjB;
+        //     }
+        //     while(toMove != origin.adjB);            
+        //     for(int i = 0; i<3; i++){
+        //         toMove.blockRef[i].color = copy[i].color;
+        //     } oneBlock[][] cpy = new oneBlock[3][3];
+        //     CubeFace tempFace = toMove.adjFace;
+        //     for(int i = 0; i<3; i++){             
+        //         for(int j = 0; i<3; j++){
+        //             cpy[i][j] = new oneBlock();
+        //             cpy[i][j].color = tempFace.face[i][j].color;
+        //         }
+        //     }
+        //     for(int i =0; i<3;i++){
+        //         tempFace.face[i][0].color = cpy[0][2-i].color;
+        //         tempFace.face[0][i].color = cpy[i][2].color;
+        //         tempFace.face[i][2].color = cpy[2][2-i].color;
+        //         tempFace.face[2][i].color = cpy[i][0].color;
+        //     }  
+        // }
     }
 
     public static void printFace(CubeFace src){
@@ -84,12 +114,12 @@ public class CubeModel {
         System.out.println();
     }
     public static void main(String[] args){
-        CubeFace FrontFace = new CubeFace(1);
-        CubeFace BackFace = new CubeFace(2);
-        CubeFace TopFace = new CubeFace(3);
-        CubeFace BottomFace = new CubeFace(4);
-        CubeFace LeftFace = new CubeFace(5);
-        CubeFace RightFace = new CubeFace(6);
+        CubeFace FrontFace = new CubeFace("B");
+        CubeFace BackFace = new CubeFace("G");
+        CubeFace TopFace = new CubeFace("W");
+        CubeFace BottomFace = new CubeFace("Y");
+        CubeFace LeftFace = new CubeFace("R");
+        CubeFace RightFace = new CubeFace("O");
         LinkFace(TopFace, FrontFace, 0);
         LinkFace(FrontFace,BottomFace,0);
         LinkFace(BottomFace, BackFace,0);
@@ -106,6 +136,7 @@ public class CubeModel {
         LinkFace(LeftFace, BottomFace, 3);
 
         movethree(TopFace.RowT, 1);
+        movethree(TopFace.ColumnL,1);
         System.out.println("top:");
         printFace(TopFace);
         System.out.println("front:");

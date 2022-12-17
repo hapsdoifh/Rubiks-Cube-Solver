@@ -1,5 +1,5 @@
 class CubeFace{
-    public CubeFace(int clr){
+    public CubeFace(String clr){
         for(int i = 0; i<3; i++){
             for(int j = 0; j<3; j++){
                 face[i][j] = new oneBlock();
@@ -7,8 +7,8 @@ class CubeFace{
             }
         }
         for(int i = 0; i<3; i++){
-            ColumnL.blockRef[i] = face[i][0];
-            ColumnR.blockRef[i] = face[i][2];
+            ColumnL.blockRef[2-i] = face[i][0];
+            ColumnR.blockRef[2-i] = face[i][2];
             RowT.blockRef[i] = face[0][i];
             RowB.blockRef[i] = face[2][i];
         }
