@@ -4,4 +4,5 @@ class ThreeBlock{
     ThreeBlock adjA;
     ThreeBlock adjB;
     CubeFace adjFace;
+    boolean isback = false;
 }

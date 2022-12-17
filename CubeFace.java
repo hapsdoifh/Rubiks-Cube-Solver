@@ -7,8 +7,8 @@ class CubeFace{
             }
         }
         for(int i = 0; i<3; i++){
-            ColumnL.blockRef[2-i] = face[i][0];
-            ColumnR.blockRef[2-i] = face[i][2];
+            ColumnL.blockRef[i] = face[i][0];
+            ColumnR.blockRef[i] = face[i][2];
             RowT.blockRef[i] = face[0][i];
             RowB.blockRef[i] = face[2][i];
         }

@@ -34,7 +34,6 @@ public class CubeModel {
                 faceA.ColumnR.adjB = faceB.RowT;
                 faceA.RowT.adjFace = faceB;
                 faceB.ColumnR.adjFace=faceA;
-
                 break;
         }
     }
@@ -49,12 +48,20 @@ public class CubeModel {
             }
             do{
                 for(int i = 0; i<3; i++){
-                    toMove.blockRef[i].color = toMove.adjB.blockRef[i].color;
+                    if(toMove.adjB.isback || toMove.isback){
+                        toMove.blockRef[2-i].color = toMove.adjB.blockRef[i].color;
+                    }else{
+                        toMove.blockRef[i].color = toMove.adjB.blockRef[i].color;
+                    }
                 }
                 toMove = toMove.adjB;
             }while(toMove != origin.adjA);            
             for(int i = 0; i<3; i++){
-                toMove.blockRef[i].color = copy[i].color;
+                if(toMove.adjB.isback || toMove.isback){
+                    toMove.blockRef[2-i].color = copy[i].color;
+                }else{
+                    toMove.blockRef[i].color = copy[i].color;
+                }
             }
             //move related face      
             oneBlock[][] cpy = new oneBlock[3][3];
@@ -94,11 +101,14 @@ public class CubeModel {
         CubeFace BottomFace = new CubeFace("Y");
         CubeFace LeftFace = new CubeFace("R");
         CubeFace RightFace = new CubeFace("O");
-        RightFace.direction = 3;
-        LinkFace(TopFace, FrontFace, 0);
-        LinkFace(FrontFace,BottomFace,0);
-        LinkFace(BottomFace, BackFace,0);
-        LinkFace(BackFace,TopFace, 0);
+        LeftFace.direction = 3;
+        TopFace.direction = 3;
+
+
+        LinkFace(FrontFace, TopFace, 0);
+        LinkFace(BottomFace,FrontFace,0);
+        LinkFace(BackFace, BottomFace,0);
+        LinkFace(TopFace,BackFace, 0);
 
         LinkFace(LeftFace, FrontFace, 1);
         LinkFace(FrontFace, RightFace, 1);
@@ -109,10 +119,28 @@ public class CubeModel {
         LinkFace(RightFace, BottomFace, 2);
         LinkFace(RightFace, TopFace, 3);
         LinkFace(LeftFace, BottomFace, 3);
+        BackFace.RowT.adjFace = TopFace;
+        BackFace.RowB.adjFace = BottomFace;
+
+        BackFace.ColumnR.adjA = BottomFace.ColumnL;
+        BackFace.ColumnR.adjB = TopFace.ColumnL;
+        BackFace.ColumnL.adjA = BottomFace.ColumnR;
+        BackFace.ColumnL.adjB = TopFace.ColumnR;
+        TopFace.ColumnL.adjA = BackFace.ColumnR;
+        TopFace.ColumnR.adjA = BackFace.ColumnL;
+
+        BottomFace.ColumnL.adjB = BackFace.ColumnR;
+        BottomFace.ColumnR.adjB = BackFace.ColumnL;
+
+        BackFace.ColumnL.isback = true;
+        BackFace.ColumnR.isback = true;
 
         movethree(TopFace.RowT, 1);
+        outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
+
         movethree(TopFace.ColumnL,1);
-        movethree(TopFace.ColumnR, 1);
+        outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
+
         movethree(FrontFace.RowT, 1);
         outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
 
@@ -131,6 +159,7 @@ public class CubeModel {
         printFace(LeftFace);
         System.out.println("right:");
         printFace(RightFace);
+        System.out.println("---------------------------");
     }
 
 }
