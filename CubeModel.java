@@ -60,18 +60,21 @@ public class CubeModel {
             oneBlock[][] cpy = new oneBlock[3][3];
             toMove = origin;
             CubeFace tempFace = toMove.adjFace;
-            for(int i = 0; i<3; i++){             
-                for(int j = 0; j<3; j++){
-                    cpy[i][j] = new oneBlock();
-                    cpy[i][j].color = tempFace.face[i][j].color;
+            for(int k = 0; k<tempFace.direction; k++){
+                for(int i = 0; i<3; i++){             
+                    for(int j = 0; j<3; j++){
+                        cpy[i][j] = new oneBlock();
+                        cpy[i][j].color = tempFace.face[i][j].color;
+                    }
                 }
-            }
-            for(int i =0; i<3;i++){
-                tempFace.face[i][0].color = cpy[2][i].color;
-                tempFace.face[0][i].color = cpy[2-i][0].color;
-                tempFace.face[i][2].color = cpy[0][i].color;
-                tempFace.face[2][i].color = cpy[2-i][2].color;
-            }            
+                for(int i =0; i<3;i++){
+                    tempFace.face[i][0].color = cpy[2][i].color;
+                    tempFace.face[0][i].color = cpy[2-i][0].color;
+                    tempFace.face[i][2].color = cpy[0][i].color;
+                    tempFace.face[2][i].color = cpy[2-i][2].color;
+                }   
+
+            }         
         }
     }
 
@@ -91,6 +94,7 @@ public class CubeModel {
         CubeFace BottomFace = new CubeFace("Y");
         CubeFace LeftFace = new CubeFace("R");
         CubeFace RightFace = new CubeFace("O");
+        RightFace.direction = 3;
         LinkFace(TopFace, FrontFace, 0);
         LinkFace(FrontFace,BottomFace,0);
         LinkFace(BottomFace, BackFace,0);
@@ -107,10 +111,9 @@ public class CubeModel {
         LinkFace(LeftFace, BottomFace, 3);
 
         movethree(TopFace.RowT, 1);
-        outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
         movethree(TopFace.ColumnL,1);
-        outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
         movethree(TopFace.ColumnR, 1);
+        movethree(FrontFace.RowT, 1);
         outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
 
     }
