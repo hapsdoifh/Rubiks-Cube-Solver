@@ -136,12 +136,9 @@ public class CubeModel {
         BackFace.ColumnR.isback = true;
 
         movethree(TopFace.RowT, 1);
-        outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
-
+        movethree(TopFace.RowB, 1);
         movethree(TopFace.ColumnL,1);
-        outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
-
-        movethree(FrontFace.RowT, 1);
+        movethree(FrontFace.RowB, 1);
         outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
 
     }
