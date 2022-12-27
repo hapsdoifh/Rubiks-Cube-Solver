@@ -92,37 +92,6 @@ public class Main {
         f6.blocks[1][2][0] = "G";
         f6.blocks[2][2][0] = "Y";
 
-        // TEST CASE 1:
-//        printFaces(f1, f5, f6, f3, f2, f4);
-//        turnColumn(f1, f5, f6, f3, f2, 1,2, 0);//turn R
-//        turnColumn(f1, f6, f5, f3, f4, 1, 0, 2); //turn L
-//        printFaces(f1, f5, f6, f3, f2, f4);
-//        turnColumn(f1, f5, f6, f3, f4, 3, 0, 2); //turn L'
-//        turnColumn(f1, f6, f5, f3, f2, 3, 2, 0); //turn R'
-//        turnColumn(f1, f6, f5, f3, 1, 1); //turn M
-//        turnColumn(f1, f5, f6, f3, 1, 1); //turn M'
-//        turnFace(f5, 4);
-
-        printFaces(f1, f5, f6, f3, f2, f4);
-
-        // TEST CASE 2:
-//        //re-adjustments
-//        turnFace(f5, 1); // turns entire face clockwise
-//        turnFace(f6, 3); // turns entire face counter-clockwise
-//
-//        //actual turn
-//        turnColumn(f2, f5, f6, f4, 2, 0); // turn B
-//        turnFace(f3, 1);
-//        turnColumn(f2, f6, f5, f4, 2, 0); // turn B'
-//        turnFace(f3, 3);
-//
-//        turnColumn(f2, f5, f6, f4, 0, 2); // turn F'
-//        turnFace(f1, 3);
-
-//        //re-adjustments
-//        turnFace(f5, 3);
-//        turnFace(f6, 1);
-
         chooseTurn(f1, f5, f6, f3, f4, f2);
         printFaces(f1, f5, f6, f3, f2, f4);
     }
@@ -255,7 +224,6 @@ public class Main {
     }
 
 
-    //1, 4, 2, 3
     public static void turnColumn(CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, int i1, int i2) {
 
         for (int i = 0; i < 3; i++) {
@@ -289,18 +257,5 @@ public class Main {
         }
     }
 
-//    public static void turnFaceCounterClockwise(CubeFace f5, int turns) {
-//        for (int i = 0; i < 3; i++) {
-//            for (int j = 0; j < 3; j++) {
-//                temp_face[i][j] = f5.blocks[j][~(i - 1) + 2][0];
-//            }
-//        }
-//
-//        for (int i = 0; i < 3; i++) {
-//            for (int j = 0; j < 3; j++) {
-//                f5.blocks[i][j][0] = temp_face[i][j];
-//            }
-//        }
-//    }
 
 }

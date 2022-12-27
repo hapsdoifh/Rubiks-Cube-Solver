@@ -1,0 +1,83 @@
+CubeFace f1 = new CubeFace("R");
+
+       f1.blocks[0][0][0] = "Y";
+       f1.blocks[1][0][0] = "Y";
+       f1.blocks[2][0][0] = "B";
+
+       f1.blocks[0][1][0] = "R";
+       f1.blocks[1][1][0] = "B";
+       f1.blocks[2][1][0] = "O";
+
+       f1.blocks[0][2][0] = "R";
+       f1.blocks[1][2][0] = "B";
+       f1.blocks[2][2][0] = "G";
+
+       CubeFace f2 = new CubeFace("W");
+
+        f2.blocks[0][0][0] = "O";
+        f2.blocks[1][0][0] = "R";
+        f2.blocks[2][0][0] = "B";
+
+        f2.blocks[0][1][0] = "G";
+        f2.blocks[1][1][0] = "R";
+        f2.blocks[2][1][0] = "B";
+
+        f2.blocks[0][2][0] = "Y";
+        f2.blocks[1][2][0] = "Y";
+        f2.blocks[2][2][0] = "G";
+
+       CubeFace f3 = new CubeFace("O");
+
+        f3.blocks[0][2][0] = "W";
+        f3.blocks[1][2][0] = "R";
+        f3.blocks[2][2][0] = "R";
+
+        f3.blocks[0][1][0] = "R";
+        f3.blocks[1][1][0] = "R";
+        f3.blocks[2][1][0] = "W";
+
+        f3.blocks[0][0][0] = "O";
+        f3.blocks[1][0][0] = "G";
+        f3.blocks[2][0][0] = "R";
+
+       CubeFace f4 = new CubeFace("B");
+
+        f4.blocks[0][0][0] = "G";
+        f4.blocks[1][0][0] = "W";
+        f4.blocks[2][0][0] = "Y";
+
+        f4.blocks[0][1][0] = "Y";
+        f4.blocks[1][1][0] = "R";
+        f4.blocks[2][1][0] = "B";
+
+        f4.blocks[0][2][0] = "O";
+        f4.blocks[1][2][0] = "W";
+        f4.blocks[2][2][0] = "W";
+
+       CubeFace f5 = new CubeFace("G");
+
+        f5.blocks[0][0][0] = "R";
+        f5.blocks[1][0][0] = "B";
+        f5.blocks[2][0][0] = "B";
+
+        f5.blocks[0][1][0] = "W";
+        f5.blocks[1][1][0] = "G";
+        f5.blocks[2][1][0] = "Y";
+
+        f5.blocks[0][2][0] = "G";
+        f5.blocks[1][2][0] = "O";
+        f5.blocks[2][2][0] = "O";
+
+       CubeFace f6 = new CubeFace("Y");
+
+        f6.blocks[0][0][0] = "O";
+        f6.blocks[1][0][0] = "G";
+        f6.blocks[2][0][0] = "W";
+
+        f6.blocks[0][1][0] = "O";
+        f6.blocks[1][1][0] = "G";
+        f6.blocks[2][1][0] = "Y";
+
+        f6.blocks[0][2][0] = "G";
+        f6.blocks[1][2][0] = "G";
+        f6.blocks[2][2][0] = "Y";
