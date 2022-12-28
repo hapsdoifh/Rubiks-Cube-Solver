@@ -14,7 +14,6 @@ public class Rotate3Block {
             f3.blocks[i][i2][0] = temp_column[~(i - 1) + 2];
         }
     }
-
     public static void turnFace(CubeFace f2, int turns) {
         for (int n = 0; n < turns; n++) {
 

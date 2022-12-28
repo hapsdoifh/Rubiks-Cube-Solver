@@ -14,19 +14,17 @@ public class Main {
         CubeFace f6 = new CubeFace("Y");
         Rotate3Block r3 = new Rotate3Block();
 
-        printFaces(f1, f5, f6, f3, f2, f4);
+        printFaces(f1, f5, f6, f3, f2, f4); // prints original faces
 
         while (true) {
             chooseTurn(r3, f1, f5, f6, f3, f4, f2);
             System.out.println("Stop? ");
             String stop = in.nextLine();
             if (stop.equals("y")) {
-                printFaces(f1, f5, f6, f3, f2, f4);
+                printFaces(f1, f5, f6, f3, f2, f4); // prints faces after each turn
             }
         }
-
     }
-
     public static void chooseTurn(Rotate3Block r, CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f4, CubeFace f2) {
         System.out.println("What turn? ");
         String turn = in.nextLine();
@@ -155,5 +153,4 @@ public class Main {
             System.out.println();
         }
     }
-
 }
