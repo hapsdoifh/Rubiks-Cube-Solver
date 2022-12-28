@@ -6,22 +6,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-       CubeFace f1 = new CubeFace("R");
-
-       CubeFace f2 = new CubeFace("W");
-
-       CubeFace f3 = new CubeFace("O");
-
-       CubeFace f4 = new CubeFace("B");
-
-       CubeFace f5 = new CubeFace("G");
-
-       CubeFace f6 = new CubeFace("Y");
-
+        CubeFace f1 = new CubeFace("R");
+        CubeFace f2 = new CubeFace("W");
+        CubeFace f3 = new CubeFace("O");
+        CubeFace f4 = new CubeFace("B");
+        CubeFace f5 = new CubeFace("G");
+        CubeFace f6 = new CubeFace("Y");
         Rotate3Block r3 = new Rotate3Block();
 
-        chooseTurn(r3, f1, f5, f6, f3, f4, f2);
         printFaces(f1, f5, f6, f3, f2, f4);
+
+        while (true) {
+            chooseTurn(r3, f1, f5, f6, f3, f4, f2);
+            System.out.println("Stop? ");
+            String stop = in.nextLine();
+            if (stop.equals("y")) {
+                printFaces(f1, f5, f6, f3, f2, f4);
+            }
+        }
+
     }
 
     public static void chooseTurn(Rotate3Block r, CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f4, CubeFace f2) {
@@ -129,16 +132,17 @@ public class Main {
     }
 
     public static void printFaces(CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f2, CubeFace f4) {
+        System.out.println("\nFront:");
         printF(f1);
-        System.out.println();
+        System.out.println("\nTop:");
         printF(f5);
-        System.out.println();
+        System.out.println("\nBottom:");
         printF(f6);
-        System.out.println();
+        System.out.println("\nBack:");
         printF(f3);
-        System.out.println();
+        System.out.println("\nRight:");
         printF(f2);
-        System.out.println();
+        System.out.println("\nLeft:");
         printF(f4);
         System.out.println("---------------------------");
     }

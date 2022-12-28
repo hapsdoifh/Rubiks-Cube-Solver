@@ -34,5 +34,3 @@ public class Rotate3Block {
         }
     }
 }
-
-
