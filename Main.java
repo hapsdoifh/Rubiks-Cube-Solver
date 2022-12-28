@@ -148,7 +148,7 @@ public class Main {
     public static void printF(CubeFace face) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                System.out.print(face.blocks[i][j][0] + " ");
+                System.out.print(face.blocks[i][j] + " ");
             }
             System.out.println();
         }
