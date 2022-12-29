@@ -1,3 +1,4 @@
+
 public class CubeFace {
     String[][] blocks = new String[3][3];
     CubeFace(String color) {
