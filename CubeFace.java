@@ -12,7 +12,6 @@ class CubeFace{
     }
     String[][] face = new String[Fsize][Fsize];
     CubeFace[] nexts = new CubeFace[2];
-    CubeFace[] prevs = new CubeFace[2];
     int[] ThisRotations = new int[2];
     int[] NextRotations = new int[2];
     String FaceId;

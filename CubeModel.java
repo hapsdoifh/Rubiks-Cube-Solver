@@ -10,16 +10,19 @@ public class CubeModel {
 
     public static CubeFace TurnFace(CubeFace src, int turn){
         CubeFace temp = new CubeFace("_","");
-        temp.face[1][1] = src.face[1][1];
+        int layer = 0,lim = CubeFace.Fsize-1;
+        copyFace(temp, src);
         for(int j = 0; j<turn; j++){
-            for(int i = 0; i<3; i++){ //counter-clockwise
-                temp.face[0][i] = src.face[i][2];
-                temp.face[i][2] = src.face[2][2-i];
-                temp.face[2][i] = src.face[i][0];
-                temp.face[i][0] = src.face[0][2-i];
+            for(layer = 0; (float)layer < ((float)lim)/2; layer++){
+                for(int i = layer; i<lim-layer; i++){ //counter-clockwise
+                    temp.face[layer][i] = src.face[i][lim-layer]; //top row
+                    temp.face[i][lim-layer] = src.face[lim-layer][lim-layer-i]; //right col
+                    temp.face[lim-layer][lim-layer-i] = src.face[lim-layer-i][layer]; //bottom row
+                    temp.face[lim-layer-i][layer] = src.face[layer][i];
+                }                        
             }
             copyFace(src, temp);
-        }        
+        }
         return src;
     }
 
@@ -44,29 +47,31 @@ public class CubeModel {
         }
     }
 
-    public static CubeFace movethree(CubeFace Archive, CubeFace ReverseStart,CubeFace Origin, int Dir, int DirStore, int RowCol){
+    public static CubeFace moveRowCol(CubeFace Archive, CubeFace ReverseStart,CubeFace Origin, int Dir, int DirStore, int RowCol){
         int turns;
         CubeFace Face;
         if(ReverseStart.nexts[Dir] == Origin ){
-            moveblocks(ReverseStart, Archive ,Dir, RowCol);
-            Dir = 1-DirStore;
-            if(RowCol == 0){    
-                ReverseStart = Origin;
-                while(ReverseStart.nexts[Dir]!=Origin){
-                    CubeFace store = ReverseStart;
-                    ReverseStart=ReverseStart.nexts[Dir];
-                    Dir = isTB(store, ReverseStart, Dir);
+            if(RowCol == 0 || RowCol == CubeFace.Fsize-1){                
+                moveblocks(ReverseStart, Archive ,Dir, RowCol);
+                Dir = 1-DirStore;
+                if(RowCol == 0){    
+                    ReverseStart = Origin;
+                    while(ReverseStart.nexts[Dir]!=Origin){
+                        CubeFace store = ReverseStart;
+                        ReverseStart=ReverseStart.nexts[Dir];
+                        Dir = isTB(store, ReverseStart, Dir);
+                    }
+                    Face = ReverseStart;
+                    turns = 3;
+                }else{        
+                    Face = Origin.nexts[Dir];  
+                    turns = 1; 
                 }
-                Face = ReverseStart;
-                turns = 3;
-            }else{        
-                Face = Origin.nexts[Dir];  
-                turns = 1; 
+                if(Face.FaceId.equals("L") || Face.FaceId.equals("R")){
+                    turns = 4 - turns;
+                }
+                copyFace(Face, TurnFace(Face, turns)); 
             }
-            if(Face.FaceId.equals("L") || Face.FaceId.equals("R")){
-                turns = 4 - turns;
-            }
-            copyFace(Face, TurnFace(Face, turns)); 
             return null;
         }else{
             if(ReverseStart == Origin){
@@ -78,21 +83,21 @@ public class CubeModel {
             CubeFace store = ReverseStart;
             ReverseStart = ReverseStart.nexts[Dir];
             Dir = isTB(store, ReverseStart, Dir);
-            return movethree(Archive, ReverseStart, Origin, Dir, DirStore, RowCol);
+            return moveRowCol(Archive, ReverseStart, Origin, Dir, DirStore, RowCol);
         }
     }
 
     public static void copyFace(CubeFace dest, CubeFace src){
-        for(int i = 0; i<3; i++){
-            for(int j = 0; j<3; j++){
+        for(int i = 0; i<CubeFace.Fsize; i++){
+            for(int j = 0; j<CubeFace.Fsize; j++){
                 dest.face[i][j] = src.face[i][j];
             }
         }
     }
 
     public static void printFace(CubeFace src){
-        for(int i = 0; i<3; i++){
-            for(int j = 0; j<3; j++){
+        for(int i = 0; i<CubeFace.Fsize; i++){
+            for(int j = 0; j<CubeFace.Fsize; j++){
                 System.out.print(src.face[i][j]+" ");
             }
             System.out.println();
@@ -102,18 +107,18 @@ public class CubeModel {
 
     public static void repeatTurns(int WhichWay,CubeFace src,int Dir, int RowCol){
         for(int i = 0; i<WhichWay; i++){
-            movethree(null, src, src, Dir, Dir, RowCol);
+            moveRowCol(null, src, src, Dir, Dir, RowCol);
         }
     }
 
     public static void main(String[] args){
         CubeFace FrontFace = new CubeFace("B","F");
         CubeFace BackFace = new CubeFace("G","B");
-        CubeFace TopFace = new CubeFace("W","T");
-        CubeFace BottomFace = new CubeFace("Y","D");
-        CubeFace LeftFace = new CubeFace("R","L");
+        CubeFace TopFace = new CubeFace("Y","T");
+        CubeFace BottomFace = new CubeFace("W","D");
+        CubeFace LeftFace = new CubeFace("O","L");
         LeftFace.isLR = true;
-        CubeFace RightFace = new CubeFace("O","R");
+        CubeFace RightFace = new CubeFace("R","R");
         RightFace.isLR = true;
 
         LinkFace(LeftFace, TopFace, 0, 3,0); //1 is clockwise 90 itself
@@ -158,7 +163,6 @@ public class CubeModel {
             outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
             temp = sc.nextLine();
         }
-    
     }
 
     public static void outputSituation(CubeFace FrontFace,CubeFace TopFace,CubeFace BottomFace,CubeFace BackFace,CubeFace LeftFace,CubeFace RightFace){        
