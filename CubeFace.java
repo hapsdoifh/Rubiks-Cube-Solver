@@ -1,7 +1,7 @@
 import javax.xml.transform.stax.StAXResult;
 
 class CubeFace{
-    static final int Fsize = 3;
+    static final int Fsize = 4;
     public CubeFace(String clr, String id){
         FaceId = id;
         for(int i = 0; i<Fsize; i++){

@@ -11,17 +11,18 @@ public class CubeModel {
     public static CubeFace TurnFace(CubeFace src, int turn){
         CubeFace temp = new CubeFace("_","");
         int layer = 0,lim = CubeFace.Fsize-1;
-        copyFace(temp, src);
+        //copyFace(temp, src);
         for(int j = 0; j<turn; j++){
             for(layer = 0; (float)layer < ((float)lim)/2; layer++){
                 for(int i = layer; i<lim-layer; i++){ //counter-clockwise
                     temp.face[layer][i] = src.face[i][lim-layer]; //top row
-                    temp.face[i][lim-layer] = src.face[lim-layer][lim-layer-i]; //right col
-                    temp.face[lim-layer][lim-layer-i] = src.face[lim-layer-i][layer]; //bottom row
-                    temp.face[lim-layer-i][layer] = src.face[layer][i];
+                    temp.face[i][lim-layer] = src.face[lim-layer][lim-i]; //right col
+                    temp.face[lim-layer][lim-i] = src.face[lim-i][layer]; //bottom row
+                    temp.face[lim-i][layer] = src.face[layer][i];
                 }                        
             }
             copyFace(src, temp);
+            temp = new CubeFace("_","");
         }
         return src;
     }
@@ -50,9 +51,9 @@ public class CubeModel {
     public static CubeFace moveRowCol(CubeFace Archive, CubeFace ReverseStart,CubeFace Origin, int Dir, int DirStore, int RowCol){
         int turns;
         CubeFace Face;
-        if(ReverseStart.nexts[Dir] == Origin ){
-            if(RowCol == 0 || RowCol == CubeFace.Fsize-1){                
-                moveblocks(ReverseStart, Archive ,Dir, RowCol);
+        if(ReverseStart.nexts[Dir] == Origin ){         
+            moveblocks(ReverseStart, Archive ,Dir, RowCol);
+            if(RowCol == 0 || RowCol == CubeFace.Fsize-1){       
                 Dir = 1-DirStore;
                 if(RowCol == 0){    
                     ReverseStart = Origin;
@@ -139,26 +140,13 @@ public class CubeModel {
         Scanner sc = new Scanner(System.in);
         String temp = sc.nextLine();
         while(!temp.equals("quit")){
-            int rpt = 4-temp.charAt(2)+'0';
-            switch(temp.charAt(0)+""+temp.charAt(1)){
-                case "FL":
-                    repeatTurns(rpt,FrontFace, 0, 0);
-                    break;
-                case "FR":
-                    repeatTurns(rpt,FrontFace, 0, 2);
-                    break;
-                case "FT":
-                    repeatTurns(rpt, FrontFace, 1, 0);
-                    break;
-                case "FB":
-                    repeatTurns(rpt, FrontFace, 1, 2);
-                    break;
-                case "TT":
-                    repeatTurns(rpt, TopFace, 1, 0);
-                    break;
-                case "TB":
-                    repeatTurns(rpt, TopFace, 1, 2);
-                    break;
+            int rpt = 4-temp.charAt(0)+'0';
+            int Direction = (temp.charAt(2)-'V')/('H'-'V');
+            int rowcol = temp.charAt(3)-'0';
+            if(temp.charAt(1) == 'F'){
+                repeatTurns(rpt,FrontFace, Direction, rowcol);
+            }else{
+                repeatTurns(rpt,TopFace, Direction, rowcol);
             }
             outputSituation(FrontFace,TopFace,BottomFace,BackFace,LeftFace,RightFace);
             temp = sc.nextLine();
