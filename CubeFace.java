@@ -1,22 +1,18 @@
+import javax.xml.transform.stax.StAXResult;
+
 class CubeFace{
+    static final int Fsize = 3;
     public CubeFace(String clr){
-        for(int i = 0; i<3; i++){
-            for(int j = 0; j<3; j++){
-                face[i][j] = new oneBlock();
-                face[i][j].color = clr;
+        for(int i = 0; i<Fsize; i++){
+            for(int j = 0; j<Fsize; j++){
+                face[i][j] = clr;
             }
         }
-        for(int i = 0; i<3; i++){
-            ColumnL.blockRef[i] = face[i][0];
-            ColumnR.blockRef[i] = face[i][2];
-            RowT.blockRef[i] = face[0][i];
-            RowB.blockRef[i] = face[2][i];
-        }
     }
-    int direction = 1;
-    oneBlock[][] face = new oneBlock[3][3];
-    ThreeBlock ColumnL = new ThreeBlock();
-    ThreeBlock ColumnR = new ThreeBlock();
-    ThreeBlock RowT = new ThreeBlock();
-    ThreeBlock RowB = new ThreeBlock();
+    String[][] face = new String[Fsize][Fsize];
+    CubeFace[] nexts = new CubeFace[2];
+    CubeFace[] prevs = new CubeFace[2];
+    int[] ThisRotations = new int[2];
+    int[] NextRotations = new int[2];
+    boolean isLR = false;
 }
