@@ -22,47 +22,50 @@ public class Solution {
 
     public static void checkWhite() {
 
-        boolean flag = true;
+//        boolean flag = true;
         CubeFace[] faces = {f1, f2, f3, f4};
 
         // code below for half of the cross completed
 
-        boolean MLBool;
-        boolean MRBool;
-        boolean MTBool;
-        boolean MBBool;
-        do {
+//        boolean MLBool;
+//        boolean MRBool;
+//        boolean MTBool;
+//        boolean MBBool;
+//        do {
+//
+//            MLBool = checkMidLeft(faces);
+//            MRBool = checkMidRight(faces);
+//            MTBool = checkMidTop(faces);
+//            MBBool = checkMidBottom(faces);
+//
+//        } while (MLBool == false && MRBool == false && MTBool == false && MBBool == false);
 
-            MLBool = checkMidLeft(faces);
-            MRBool = checkMidRight(faces);
-            MTBool = checkMidTop(faces);
-            MBBool = checkMidBottom(faces);
 
-        } while (MLBool == false && MRBool == false && MTBool == false && MBBool == false);
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 4; i++) {
 
+                if ((faces[i]).blocks[1][0].equals("W")) {
+                    moveEdgeToBottom("f" + (i + 1), 0);
+                }
 
-//        for (int i = 0; i < 4; i++) {
-//
-//            if ((faces[i]).blocks[1][0].equals("W")) {
-//                moveEdgeToBottom("f" + (i + 1), 0);
-//            }
-//
-//            if ((faces[i]).blocks[1][2].equals("W")) {
-//                moveEdgeToBottom("f" + (i + 1), 2);
-//            }
-//
-//            if ((faces[i]).blocks[0][1].equals("W")) {
-//                System.out.println("Checks white:" + i);
-//                moveMidToBottom("f" + (i + 1), "");
-//            }
-//
-//            if ((faces[i]).blocks[2][1].equals("W")) {
-//                moveMidToBottom("f" + (i + 1), "P");
-//            }
-//
-//            findTopAdjColor();
-//
-//        }
+                if ((faces[i]).blocks[1][2].equals("W")) {
+                    moveEdgeToBottom("f" + (i + 1), 2);
+                }
+
+                if ((faces[i]).blocks[0][1].equals("W")) {
+                    System.out.println("Checks white:" + i);
+                    moveMidToBottom("f" + (i + 1), "");
+                }
+
+                if ((faces[i]).blocks[2][1].equals("W")) {
+                    moveMidToBottom("f" + (i + 1), "P");
+                }
+
+                findTopAdjColor();
+
+            }
+        }
+
     }
 
     public static boolean checkMidLeft(CubeFace[] faces) {
