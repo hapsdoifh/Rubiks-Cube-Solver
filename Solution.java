@@ -150,83 +150,93 @@ public class Solution {
 
     public static void checkIfMatching(String cAdj, String cMiddle, String face) {
 
-        if (cAdj.equals(cMiddle)) { // if the adjacent top block color matches the middle block color
-            moveToTop(face);
-
-        } else {
-//            calcRotationNumber(face, cAdj);
-
+        if (!cAdj.equals(cMiddle)) {
+            int rot_num = calcRotationNumber(face, cAdj);
+            rotateColorMatch(rot_num);
         }
+
+        moveToTop(face);
+
+//        if (cAdj.equals(cMiddle)) { // if the adjacent top block color matches the middle block color
+//            moveToTop(face);
+//
+//        } else {
+//            int rot_num = calcRotationNumber(face, cAdj);
+//            rotateColorMatch(rot_num);
+//        }
     }
 
-//    public static void calcRotationNumber (String face, String cAdj){
-//
-//        switch (face) {
-//            case "f1":
-//
-//                switch (cAdj) {
-//
-//                    case "R":
-//
-//                    case "G":
-//
-//                    case "B":
-//
-//                    case "O":
-//
-//                }
-//
-//                break;
-//            case "f2":
-//
-//                switch (cAdj) {
-//
-//                    case "R":
-//
-//                    case "G":
-//
-//                    case "B":
-//
-//                    case "O":
-//
-//                }
-//
-//                break;
-//            case "f3":
-//
-//                switch (cAdj) {
-//
-//                    case "R":
-//
-//                    case "G":
-//
-//                    case "B":
-//
-//                    case "O":
-//
-//                }
-//
-//                break;
-//            case "f4":
-//
-//                switch (cAdj) {
-//
-//                    case "R":
-//
-//                    case "G":
-//
-//                    case "B":
-//
-//                    case "O":
-//
-//                }
-//
-//                break;
-//        }
-//
-//    }
+    public static int calcRotationNumber (String face, String cAdj) {
 
-    public static void rotateColorMatch () {
+        switch (face) {
+
+            case "f1":
+
+                switch (cAdj) {
+
+                    case "R":
+                        return 1;
+                    case "B":
+                        return 2;
+                    case "O":
+                        return 3;
+                }
+
+                break;
+
+            case "f2":
+
+                switch (cAdj) {
+
+                    case "B":
+                        return 1;
+                    case "O":
+                        return 2;
+                    case "G":
+                        return 3;
+                }
+
+                break;
+
+            case "f3":
+
+                switch (cAdj) {
+
+                    case "O":
+                        return 1;
+                    case "G":
+                        return 2;
+                    case "R":
+                        return 3;
+                }
+
+                break;
+
+            case "f4":
+
+                switch (cAdj) {
+
+                    case "G":
+                        return 1;
+                    case "R":
+                        return 2;
+                    case "B":
+                        return 3;
+                }
+
+                break;
+
+        }
+
+        return 0;
+
+    }
+
+    public static void rotateColorMatch (int num) {
+
+        for (int i = 0; i < num; i++) {
+            Main.chooseTurn("D");
+        }
 
     }
 
