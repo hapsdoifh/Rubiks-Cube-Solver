@@ -82,6 +82,5 @@ CubeFace f1 = new CubeFace("R");
         f6.blocks[1][2] = "G";
         f6.blocks[2][2]= "G";
 
-
         SOLUTION:
         R', F', D2, B2, U', F2, U', R', U', R2, U, L2, F', D', R2, U', L2, B2, L2, U2

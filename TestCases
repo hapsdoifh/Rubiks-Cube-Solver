@@ -1,3 +1,4 @@
+
         //TEST CASE 1:
         printFaces(f1, f5, f6, f3, f2, f4);
         turnColumn(f1, f5, f6, f3, 2, 0);//turn R

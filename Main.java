@@ -1,33 +1,133 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     static Scanner in = new Scanner(System.in);
 
+    static CubeFace f1;
+    static CubeFace f2;
+    static CubeFace f3;
+    static CubeFace f4;
+    static CubeFace f5;
+    static CubeFace f6;
+
+    static Rotate3Block r;
+
     public static void main(String[] args) {
 
-        CubeFace f1 = new CubeFace("R");
-        CubeFace f2 = new CubeFace("W");
-        CubeFace f3 = new CubeFace("O");
-        CubeFace f4 = new CubeFace("B");
-        CubeFace f5 = new CubeFace("G");
-        CubeFace f6 = new CubeFace("Y");
-        Rotate3Block r3 = new Rotate3Block();
+        f1 = new CubeFace("G");
+
+        f1.blocks[0][0] = "Y";
+        f1.blocks[1][0] = "W";
+        f1.blocks[2][0] = "B";
+
+        f1.blocks[0][1] = "R";
+        f1.blocks[1][1] = "G";
+        f1.blocks[2][1] = "O";
+
+        f1.blocks[0][2] = "R";
+        f1.blocks[1][2] = "Y";
+        f1.blocks[2][2] = "R";
+
+        f2 = new CubeFace("R");
+
+        f2.blocks[0][0] = "Y";
+        f2.blocks[1][0] = "R";
+        f2.blocks[2][0] = "G";
+
+        f2.blocks[0][1] = "G";
+        f2.blocks[1][1] = "R";
+        f2.blocks[2][1] = "W";
+
+        f2.blocks[0][2] = "O";
+        f2.blocks[1][2] = "B";
+        f2.blocks[2][2] = "R";
+
+        f3 = new CubeFace("B");
+
+        f3.blocks[0][0] = "G";
+        f3.blocks[1][0] = "B";
+        f3.blocks[2][0] = "Y";
+
+        f3.blocks[0][1] = "O";
+        f3.blocks[1][1] = "B";
+        f3.blocks[2][1] = "B";
+
+        f3.blocks[0][2] = "R";
+        f3.blocks[1][2] = "R";
+        f3.blocks[2][2] = "G";
+
+        f4 = new CubeFace("O");
+
+        f4.blocks[0][0] = "B";
+        f4.blocks[1][0] = "R";
+        f4.blocks[2][0] = "Y";
+
+        f4.blocks[0][1] = "R";
+        f4.blocks[1][1] = "O";
+        f4.blocks[2][1] = "G";
+
+        f4.blocks[0][2] = "B";
+        f4.blocks[1][2] = "R";
+        f4.blocks[2][2] = "O";
+
+        f5 = new CubeFace("W");
+
+        f5.blocks[0][0] = "R";
+        f5.blocks[1][0] = "R";
+        f5.blocks[2][0] = "O";
+
+        f5.blocks[0][1] = "O";
+        f5.blocks[1][1] = "W";
+        f5.blocks[2][1] = "O";
+
+        f5.blocks[0][2] = "R";
+        f5.blocks[1][2] = "O";
+        f5.blocks[2][2] = "B";
+
+        f6 = new CubeFace("Y");
+
+        f6.blocks[0][0] = "R";
+        f6.blocks[1][0] = "G";
+        f6.blocks[2][0] = "O";
+
+        f6.blocks[0][1] = "W";
+        f6.blocks[1][1] = "Y";
+        f6.blocks[2][1] = "W";
+
+        f6.blocks[0][2] = "R";
+        f6.blocks[1][2] = "G";
+        f6.blocks[2][2]= "G";
+
+        r = new Rotate3Block();
+
+        Solution s = new Solution(f1, f2, f3, f4, f6);
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints original faces
 
-        while (true) {
-            chooseTurn(r3, f1, f5, f6, f3, f4, f2);
-            System.out.println("Stop? ");
-            String stop = in.nextLine();
-            if (stop.equals("y")) {
-                printFaces(f1, f5, f6, f3, f2, f4); // prints faces after each turn
-            }
-        }
+        // solution
+        s.checkWhiteBottom();
+
+        printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+
+
+        // user chooses turn
+
+//        while (true) {
+//            chooseTurn(r3, f1, f5, f6, f3, f4, f2);
+//            System.out.println("Stop? ");
+//            String stop = in.nextLine();
+//            if (stop.equals("y")) {
+//                printFaces(f1, f5, f6, f3, f2, f4); // prints faces after each turn
+//            }
+//        }
+
+        // Rotate3Block r, CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f4, CubeFace f2
     }
-    public static void chooseTurn(Rotate3Block r, CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f4, CubeFace f2) {
-        System.out.println("What turn? ");
-        String turn = in.nextLine();
+    public static void chooseTurn(String t) {
+//        System.out.println("What turn? ");
+//        String turn = in.nextLine();
+
+        String turn = t;
 
         if (turn.equals("R") || turn.equals("RP") || turn.equals("L") || turn.equals("LP") || turn.equals("M") || turn.equals("MP")) {
             switch (turn) {
