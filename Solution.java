@@ -6,12 +6,15 @@ public class Solution {
     static CubeFace f4;
     static CubeFace f6;
 
+    static boolean isWhite = false;
+
     Solution(CubeFace f1, CubeFace f2, CubeFace f3, CubeFace f4, CubeFace f6) {
         this.f1 = f1;
         this.f2 = f2;
         this.f3 = f3;
         this.f4 = f4;
         this.f6 = f6;
+
     }
 
     public void checkWhiteBottom() {
@@ -19,30 +22,100 @@ public class Solution {
 
     public static void checkWhite() {
 
+        boolean flag = true;
         CubeFace[] faces = {f1, f2, f3, f4};
 
         // code below for half of the cross completed
-        for (int i = 0; i < 1; i++) {
+
+        boolean MLBool;
+        boolean MRBool;
+        boolean MTBool;
+        boolean MBBool;
+        do {
+
+            MLBool = checkMidLeft(faces);
+            MRBool = checkMidRight(faces);
+            MTBool = checkMidTop(faces);
+            MBBool = checkMidBottom(faces);
+
+        } while (MLBool == false && MRBool == false && MTBool == false && MBBool == false);
+
+
+//        for (int i = 0; i < 4; i++) {
+//
+//            if ((faces[i]).blocks[1][0].equals("W")) {
+//                moveEdgeToBottom("f" + (i + 1), 0);
+//            }
+//
+//            if ((faces[i]).blocks[1][2].equals("W")) {
+//                moveEdgeToBottom("f" + (i + 1), 2);
+//            }
+//
+//            if ((faces[i]).blocks[0][1].equals("W")) {
+//                System.out.println("Checks white:" + i);
+//                moveMidToBottom("f" + (i + 1), "");
+//            }
+//
+//            if ((faces[i]).blocks[2][1].equals("W")) {
+//                moveMidToBottom("f" + (i + 1), "P");
+//            }
+//
+//            findTopAdjColor();
+//
+//        }
+    }
+
+    public static boolean checkMidLeft(CubeFace[] faces) {
+        for (int i = 0; i < 4; i++) {
 
             if ((faces[i]).blocks[1][0].equals("W")) {
                 moveEdgeToBottom("f" + (i + 1), 0);
+                findTopAdjColor();
+                isWhite = true;
             }
+        }
+
+        return isWhite;
+    }
+
+    public static boolean checkMidRight(CubeFace[] faces) {
+        for (int i = 0; i < 4; i++) {
 
             if ((faces[i]).blocks[1][2].equals("W")) {
                 moveEdgeToBottom("f" + (i + 1), 2);
+                findTopAdjColor();
+                isWhite = true;
             }
+        }
+
+        return isWhite;
+    }
+
+    public static boolean checkMidTop(CubeFace[] faces) {
+        for (int i = 0; i < 4; i++) {
 
             if ((faces[i]).blocks[0][1].equals("W")) {
+                System.out.println("Checks white:" + i);
                 moveMidToBottom("f" + (i + 1), "");
+                findTopAdjColor();
+                isWhite = true;
             }
+        }
+
+        return isWhite;
+    }
+
+    public static boolean checkMidBottom(CubeFace[] faces) {
+        for (int i = 0; i < 4; i++) {
 
             if ((faces[i]).blocks[2][1].equals("W")) {
                 moveMidToBottom("f" + (i + 1), "P");
+                findTopAdjColor();
+                isWhite = true;
             }
-
-            findTopAdjColor();
-
         }
+
+        return isWhite;
     }
 
     public static void moveEdgeToBottom(String face, int column) {
@@ -53,15 +126,27 @@ public class Solution {
                 switch (face) {
                     case "f1":
                         Main.chooseTurn("L");
+                        Main.chooseTurn("D");
+                        Main.chooseTurn("LP");
+                        Main.chooseTurn("DP");
                         break;
                     case "f2":
                         Main.chooseTurn("F");
+                        Main.chooseTurn("D");
+                        Main.chooseTurn("FP");
+                        Main.chooseTurn("DP");
                         break;
                     case "f3":
                         Main.chooseTurn("R");
+                        Main.chooseTurn("D");
+                        Main.chooseTurn("RP");
+                        Main.chooseTurn("DP");
                         break;
                     case "f4":
                         Main.chooseTurn("B");
+                        Main.chooseTurn("D");
+                        Main.chooseTurn("BP");
+                        Main.chooseTurn("DP");
                         break;
 
                 }
@@ -71,19 +156,29 @@ public class Solution {
                 switch (face) {
                     case "f1":
                         Main.chooseTurn("RP");
-                        System.out.println("done RP");
+                        Main.chooseTurn("DP");
+                        Main.chooseTurn("R");
+                        Main.chooseTurn("D");
                         break;
                     case "f2":
                         Main.chooseTurn("BP");
+                        Main.chooseTurn("DP");
+                        Main.chooseTurn("B");
+                        Main.chooseTurn("D");
                         break;
                     case "f3":
                         Main.chooseTurn("LP");
+                        Main.chooseTurn("DP");
+                        Main.chooseTurn("L");
+                        Main.chooseTurn("D");
                         break;
                     case "f4":
                         Main.chooseTurn("FP");
+                        Main.chooseTurn("DP");
+                        Main.chooseTurn("F");
+                        Main.chooseTurn("D");
                         break;
                 }
-
 
         }
 
@@ -99,6 +194,7 @@ public class Solution {
                 Main.chooseTurn("RP");
                 Main.chooseTurn("DP");
                 Main.chooseTurn("R");
+                System.out.println("Moved to bottom!");
                 break;
             case "f2":
                 Main.chooseTurn("R" + isPrime);
@@ -127,6 +223,7 @@ public class Solution {
         String color = "";
 
         if (f6.blocks[0][1].equals("W")) {
+            System.out.println("It's white!");
             color = f1.blocks[2][1];
             checkIfMatching(f1.blocks[2][1], f1.blocks[1][1], "f1");
         }
@@ -150,12 +247,16 @@ public class Solution {
 
     public static void checkIfMatching(String cAdj, String cMiddle, String face) {
 
+        int rot_num = 0;
+
         if (!cAdj.equals(cMiddle)) {
-            int rot_num = calcRotationNumber(face, cAdj);
+            System.out.println(cAdj + ", " + cMiddle);
+            System.out.println("Not matching!");
+            rot_num = calcRotationNumber(face, cAdj);
             rotateColorMatch(rot_num);
         }
 
-        moveToTop(face);
+        moveToTop(face, rot_num);
 
 //        if (cAdj.equals(cMiddle)) { // if the adjacent top block color matches the middle block color
 //            moveToTop(face);
@@ -240,23 +341,88 @@ public class Solution {
 
     }
 
-    public static void moveToTop(String face) {
+    public static void moveToTop(String face, int rot_num) {
 
         for (int i = 0; i < 2; i++) {
 
             switch (face) {
 
                 case "f1":
-                    Main.chooseTurn("F");
+
+                    switch (rot_num) {
+                        case 0:
+                            Main.chooseTurn("F");
+                            break;
+                        case 1:
+                            Main.chooseTurn("R");
+                            break;
+                        case 2:
+                            Main.chooseTurn("B");
+                            break;
+                        case 3:
+                            Main.chooseTurn("L");
+                            break;
+                    }
+
+//                    Main.chooseTurn("F");
                     break;
                 case "f2":
-                    Main.chooseTurn("R");
+
+                    switch (rot_num) {
+                        case 0:
+                            System.out.println("Turned R!");
+                            Main.chooseTurn("R");
+                            break;
+                        case 1:
+                            Main.chooseTurn("B");
+                            break;
+                        case 2:
+                            Main.chooseTurn("L");
+                            break;
+                        case 3:
+                            Main.chooseTurn("F");
+                            break;
+                    }
+
+//                    Main.chooseTurn("R");
                     break;
                 case "f3":
-                    Main.chooseTurn("B");
+
+                    switch (rot_num) {
+                        case 0:
+                            Main.chooseTurn("B");
+                            break;
+                        case 1:
+                            Main.chooseTurn("L");
+                            break;
+                        case 2:
+                            Main.chooseTurn("F");
+                            break;
+                        case 3:
+                            Main.chooseTurn("R");
+                            break;
+                    }
+
+//                    Main.chooseTurn("B");
                     break;
                 case "f4":
-                    Main.chooseTurn("L");
+
+                    switch (rot_num) {
+                        case 0:
+                            Main.chooseTurn("L");
+                            break;
+                        case 1:
+                            Main.chooseTurn("F");
+                            break;
+                        case 2:
+                            Main.chooseTurn("R");
+                            break;
+                        case 3:
+                            Main.chooseTurn("B");
+                            break;
+                    }
+
+//                    Main.chooseTurn("L");
                     break;
 
             }
