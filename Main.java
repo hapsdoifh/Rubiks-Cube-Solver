@@ -100,7 +100,7 @@ public class Main {
 
         r = new Rotate3Block();
 
-        Solution s = new Solution(f1, f2, f3, f4, f6);
+        WhiteCross s = new WhiteCross(f1, f2, f3, f4, f6);
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints original faces
 
