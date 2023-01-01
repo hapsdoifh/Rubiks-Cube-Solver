@@ -52,6 +52,7 @@ public class CornerSolution {
                         Main.chooseTurn(convertMove(k)[side]+"P");
                     }
                     corner ++;
+                    Main.printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
                     break;
                 }
             }
@@ -125,16 +126,16 @@ public class CornerSolution {
                         Main.chooseTurn("L");
                         Main.chooseTurn("D");
                         Main.chooseTurn("LP");
-                        for(int fix = 0; fix<=i; fix++){
-                            Main.chooseTurn("UP");
+                        for(int fix = 0; fix<i; fix++){
+                            Main.chooseTurn("U");
                         }
                         break;
                     }else if(faceList[i].blocks[0][1].equals("W")){
                         Main.chooseTurn("RP");
                         Main.chooseTurn("DP");
                         Main.chooseTurn("R");
-                        for(int fix = 0; fix<=i; fix++){
-                            Main.chooseTurn("UP");
+                        for(int fix = 0; fix<i; fix++){
+                            Main.chooseTurn("U");
                         }
                         break;
                     }    
