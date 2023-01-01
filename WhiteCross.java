@@ -4,20 +4,24 @@ public class WhiteCross {
     static CubeFace f2;
     static CubeFace f3;
     static CubeFace f4;
+    static CubeFace f5;
     static CubeFace f6;
 
-    static boolean isWhite = false;
-
-    WhiteCross(CubeFace f1, CubeFace f2, CubeFace f3, CubeFace f4, CubeFace f6) {
+    WhiteCross(CubeFace f1, CubeFace f2, CubeFace f3, CubeFace f4, CubeFace f5, CubeFace f6) {
         this.f1 = f1;
         this.f2 = f2;
         this.f3 = f3;
         this.f4 = f4;
+        this.f5 = f5;
         this.f6 = f6;
 
     }
 
     public void checkWhiteBottom() {
+
+        if (f5.blocks[0][1].equals("W") || f5.blocks[1][0].equals("W") || f5.blocks[1][2].equals("W") || f5.blocks[2][1].equals("W")) {
+            moveTopToBottom();
+        }
 
         if (f6.blocks[0][1].equals("W") || f6.blocks[1][0].equals("W") || f6.blocks[1][2].equals("W") || f6.blocks[2][1].equals("W")) {
             findTopAdjColor();
@@ -32,7 +36,13 @@ public class WhiteCross {
         CubeFace[] faces = {f1, f2, f3, f4};
 
         for (int j = 0; j < 4; j++) {
+
             for (int i = 0; i < 4; i++) {
+
+                if ((faces[i]).blocks[0][1].equals("W")) {
+                    System.out.println("Checks white:" + i);
+                    moveMidToBottom("f" + (i + 1), "");
+                }
 
                 if ((faces[i]).blocks[1][0].equals("W")) {
                     moveEdgeToBottom("f" + (i + 1), 0);
@@ -40,11 +50,6 @@ public class WhiteCross {
 
                 if ((faces[i]).blocks[1][2].equals("W")) {
                     moveEdgeToBottom("f" + (i + 1), 2);
-                }
-
-                if ((faces[i]).blocks[0][1].equals("W")) {
-                    System.out.println("Checks white:" + i);
-                    moveMidToBottom("f" + (i + 1), "");
                 }
 
                 if ((faces[i]).blocks[2][1].equals("W")) {
@@ -56,6 +61,41 @@ public class WhiteCross {
             }
         }
 
+    }
+
+
+    public static void moveTopToBottom() {
+        if (f5.blocks[0][1].equals("W")) {
+            Main.chooseTurn("B");
+            Main.chooseTurn("B");
+            Main.chooseTurn("D");
+            Main.chooseTurn("BP");
+            Main.chooseTurn("BP");
+        }
+
+        if (f5.blocks[1][0].equals("W")) {
+            Main.chooseTurn("L");
+            Main.chooseTurn("L");
+            Main.chooseTurn("D");
+            Main.chooseTurn("LP");
+            Main.chooseTurn("LP");
+        }
+
+        if (f5.blocks[1][2].equals("W")) {
+            Main.chooseTurn("R");
+            Main.chooseTurn("R");
+            Main.chooseTurn("D");
+            Main.chooseTurn("RP");
+            Main.chooseTurn("RP");
+        }
+
+        if (f5.blocks[2][1].equals("W")) {
+            Main.chooseTurn("F");
+            Main.chooseTurn("F");
+            Main.chooseTurn("D");
+            Main.chooseTurn("FP");
+            Main.chooseTurn("FP");
+        }
     }
 
     public static void moveEdgeToBottom(String face, int column) {
@@ -189,8 +229,9 @@ public class WhiteCross {
 
         int rot_num = 0;
 
+        System.out.println(cAdj + ", " + cMiddle);
+
         if (!cAdj.equals(cMiddle)) {
-            System.out.println(cAdj + ", " + cMiddle);
             System.out.println("Not matching!");
             rot_num = calcRotationNumber(face, cAdj);
             rotateColorMatch(rot_num);
