@@ -24,8 +24,8 @@ public class Main {
         // f1.blocks[1][1] = "G";
         // f1.blocks[1][2] = "Y";
  
-        f1.blocks[2][0] = "B";
-        f1.blocks[2][1] = "Y";
+        f1.blocks[2][0] = "G";
+        f1.blocks[2][1] = "G";
         f1.blocks[2][2] = "B";
  
         f2 = new CubeFace("R");
@@ -39,8 +39,8 @@ public class Main {
         // f2.blocks[1][2] = "R";
  
         f2.blocks[2][0] = "Y";
-        f2.blocks[2][1] = "Y";
-        f2.blocks[2][2] = "G";
+        f2.blocks[2][1] = "R";
+        f2.blocks[2][2] = "Y";
  
         f3 = new CubeFace("B");
  
@@ -52,8 +52,8 @@ public class Main {
         // f3.blocks[1][1] = "B";
         // f3.blocks[1][2] = "G";
  
-        f3.blocks[2][0] = "R";
-        f3.blocks[2][1] = "Y";
+        f3.blocks[2][0] = "O";
+        f3.blocks[2][1] = "B";
         f3.blocks[2][2] = "O";
  
         f4 = new CubeFace("O");
@@ -66,8 +66,8 @@ public class Main {
         // f4.blocks[1][1] = "O";
         // f4.blocks[1][2] = "G";
  
-        f4.blocks[2][0] = "G";
-        f4.blocks[2][1] = "Y";
+        f4.blocks[2][0] = "Y";
+        f4.blocks[2][1] = "O";
         f4.blocks[2][2] = "Y";
  
         f5 = new CubeFace("W");
@@ -86,17 +86,17 @@ public class Main {
  
         f6 = new CubeFace("Y");
  
-        f6.blocks[0][0] = "O";
-        f6.blocks[0][1] = "O";
+        f6.blocks[0][0] = "R";
+        f6.blocks[0][1] = "Y";
         f6.blocks[0][2] = "R";
  
-        f6.blocks[1][0] = "B";
+        f6.blocks[1][0] = "Y";
         f6.blocks[1][1] = "Y";
-        f6.blocks[1][2] = "R";
+        f6.blocks[1][2] = "Y";
  
-        f6.blocks[2][0] = "Y";
-        f6.blocks[2][1] = "G";
-        f6.blocks[2][2] = "Y";
+        f6.blocks[2][0] = "B";
+        f6.blocks[2][1] = "Y";
+        f6.blocks[2][2] = "G";
 
 
         r = new Rotate3Block();
@@ -111,7 +111,10 @@ public class Main {
         // printFaces(f1, f5, f6, f3, f2, f4); // prints original faces
         
         // CornerSolution.getCorners(f1, f2, f3, f4, f5, f6);
-        BottomCross.BCrossSolution(f1, f2, f3, f4, f5, f6);
+        //BottomCross.BCrossSolution(f1, f2, f3, f4, f5, f6);
+        printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+
+        CornerSwap.SwapCorner(f1, f2, f3, f4, f5, f6);
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
 
