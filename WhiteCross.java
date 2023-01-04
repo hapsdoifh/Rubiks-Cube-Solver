@@ -17,17 +17,55 @@ public class WhiteCross {
 
     }
 
-    public void checkWhiteBottom() {
+    //checks if first-layer is completed already
+    public static void checkWhiteCross() {
 
-        if (f5.blocks[0][1].equals("W") || f5.blocks[1][0].equals("W") || f5.blocks[1][2].equals("W") || f5.blocks[2][1].equals("W")) {
-            moveTopToBottom();
+        int counter = 0;
+
+        if (f5.blocks[0][1].equals("W")) {
+            if (f3.blocks[0][1].equals("B")) {
+                counter++;
+            }
         }
 
-        if (f6.blocks[0][1].equals("W") || f6.blocks[1][0].equals("W") || f6.blocks[1][2].equals("W") || f6.blocks[2][1].equals("W")) {
-            findTopAdjColor();
+        if (f5.blocks[1][0].equals("W")) {
+            if (f4.blocks[0][1].equals("O")) {
+                counter++;
+            }
         }
 
-        checkWhiteAround();
+        if (f5.blocks[1][2].equals("W")) {
+            if (f2.blocks[0][1].equals("R")) {
+                counter++;
+            }
+        }
+
+        if (f5.blocks[2][1].equals("W")) {
+            if (f1.blocks[0][1].equals("G")) {
+                counter++;
+            }
+        }
+
+        if (counter!=4) {
+            checkWhiteBottom();
+        }
+
+    }
+
+    public static void checkWhiteBottom() {
+
+        while (!(f5.blocks[0][1].equals("W") && f5.blocks[1][0].equals("W") && f5.blocks[1][2].equals("W") && f5.blocks[2][1].equals("W"))) {
+
+            if (f5.blocks[0][1].equals("W") || f5.blocks[1][0].equals("W") || f5.blocks[1][2].equals("W") || f5.blocks[2][1].equals("W")) {
+                moveTopToBottom();
+            }
+
+            if (f6.blocks[0][1].equals("W") || f6.blocks[1][0].equals("W") || f6.blocks[1][2].equals("W") || f6.blocks[2][1].equals("W")) {
+                findTopAdjColor();
+            }
+
+            checkWhiteAround();
+        }
 
     }
 
