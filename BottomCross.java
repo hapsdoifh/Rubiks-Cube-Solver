@@ -28,7 +28,11 @@ public class BottomCross {
             for(int i = 0; i<matchEdges(FaceList); i++){
                 Main.chooseTurn("DP");
             }
+            if(FaceList[0].blocks[1][1].equals(FaceList[0].blocks[2][1]) && FaceList[2].blocks[1][1].equals(FaceList[2].blocks[2][1]) || FaceList[1].blocks[1][1].equals(FaceList[1].blocks[2][1]) && FaceList[3].blocks[1][1].equals(FaceList[3].blocks[2][1])){
+                Main.chooseTurn("DP");
+            }
             Algorithm(1);
+            Main.printFaces(f1, f5, f6, f3, f2, f4);
             while(!f4.blocks[1][1].equals(f4.blocks[2][1])){
                 Main.chooseTurn("D");
             }
