@@ -16,7 +16,7 @@ public class SecondLayer {
         this.f6 = f6;
     }
 
-        public static void checkSecondLayer() {
+        public static boolean checkSecondLayer() {
 
         int counter = 0;
 
@@ -43,14 +43,15 @@ public class SecondLayer {
         System.out.println(counter);
 
         if (counter != 12) {
-            checkBottomYellow();
+            return false;
+        } else {
+            return true;
         }
 
     }
     public static void checkBottomYellow() {
 
-
-        for (int i = 0; i < 4; i++) {
+        while (flag==false) {
 
             if (!f6.blocks[0][1].equals("Y") && !f1.blocks[2][1].equals("Y")) {
                 System.out.println("ONE:");
@@ -95,38 +96,128 @@ public class SecondLayer {
                 Main.printFaces(f1, f5, f6, f3, f2, f4);
             }
 
+            checkFlippedEdge();
+            checkYellowEdge();
         }
 
-        checkFlippedEdge();
+        flag = checkSecondLayer();
 
     }
 
 
     public static void checkFlippedEdge() {
-        Main.chooseTurn("D");
 
-        if (f1.blocks[1][0].equals("O") && f4.blocks[1][2].equals("G")) {
-            Main.chooseTurn("L");
-            Main.chooseTurn("D");
-            Main.chooseTurn("LP");
-        } else if (f2.blocks[1][0].equals("G") && f1.blocks[1][2].equals("R")) {
-            Main.chooseTurn("F");
-            Main.chooseTurn("D");
-            Main.chooseTurn("FP");
-        } else if (f3.blocks[1][0].equals("R") && f2.blocks[1][2].equals("B")) {
-            Main.chooseTurn("R");
-            Main.chooseTurn("D");
-            Main.chooseTurn("RP");
-        } else if (f4.blocks[1][0].equals("B") && f3.blocks[1][2].equals("O")) {
-            Main.chooseTurn("B");
-            Main.chooseTurn("D");
-            Main.chooseTurn("BP");
+        for (int i = 0; i < 4; i++) {
+            if (f1.blocks[1][0].equals("O") && f4.blocks[1][2].equals("G")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("L");
+                Main.chooseTurn("D");
+                Main.chooseTurn("LP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("FP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("F");
+                Main.chooseTurn("D");
+
+            } else if (f2.blocks[1][0].equals("G") && f1.blocks[1][2].equals("R")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("F");
+                Main.chooseTurn("D");
+                Main.chooseTurn("FP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("RP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("R");
+                Main.chooseTurn("D");
+
+            } else if (f3.blocks[1][0].equals("R") && f2.blocks[1][2].equals("B")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("R");
+                Main.chooseTurn("D");
+                Main.chooseTurn("RP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("BP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("B");
+                Main.chooseTurn("D");
+
+            } else if (f4.blocks[1][0].equals("B") && f3.blocks[1][2].equals("O")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("B");
+                Main.chooseTurn("D");
+                Main.chooseTurn("BP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("LP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("L");
+                Main.chooseTurn("D");
+
+            }
         }
-
-        Main.chooseTurn("DP");
 
 
     }
+
+     public static void checkYellowEdge() {
+
+        for (int i = 0; i < 4; i++) {
+
+            if (f1.blocks[1][2].equals("Y") || f4.blocks[1][0].equals("Y")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("L");
+                Main.chooseTurn("D");
+                Main.chooseTurn("LP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("FP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("F");
+                Main.chooseTurn("D");
+
+            } else if (f2.blocks[1][2].equals("Y") || f1.blocks[1][0].equals("Y")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("F");
+                Main.chooseTurn("D");
+                Main.chooseTurn("FP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("RP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("R");
+                Main.chooseTurn("D");
+
+            } else if (f3.blocks[1][2].equals("Y") || f2.blocks[1][0].equals("Y")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("R");
+                Main.chooseTurn("D");
+                Main.chooseTurn("RP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("BP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("B");
+                Main.chooseTurn("D");
+
+            } else if (f4.blocks[1][2].equals("Y") || f3.blocks[1][0].equals("Y")) {
+                Main.chooseTurn("D");
+                Main.chooseTurn("B");
+                Main.chooseTurn("D");
+                Main.chooseTurn("BP");
+                Main.chooseTurn("DP");
+
+                Main.chooseTurn("LP");
+                Main.chooseTurn("DP");
+                Main.chooseTurn("L");
+                Main.chooseTurn("D");
+
+            }
+
+        }
+     }
 
     public static void checkIfMatching(String bottomBlock) {
 
