@@ -28,6 +28,8 @@ public class BottomCross {
             for(int i = 0; i<matchEdges(FaceList); i++){
                 Main.chooseTurn("DP");
             }
+
+            //check if the opposite sides are matched
             if(FaceList[0].blocks[1][1].equals(FaceList[0].blocks[2][1]) && FaceList[2].blocks[1][1].equals(FaceList[2].blocks[2][1]) || FaceList[1].blocks[1][1].equals(FaceList[1].blocks[2][1]) && FaceList[3].blocks[1][1].equals(FaceList[3].blocks[2][1])){
                 Main.chooseTurn("DP");
             }
