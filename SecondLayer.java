@@ -1,3 +1,4 @@
+
 public class SecondLayer {
 
     static CubeFace f1;
@@ -98,9 +99,9 @@ public class SecondLayer {
 
             checkFlippedEdge();
             checkYellowEdge();
+            flag = checkSecondLayer();
         }
 
-        flag = checkSecondLayer();
 
     }
 
