@@ -82,8 +82,9 @@ public class Main {
  
         f5.blocks[2][0] = "W";
         f5.blocks[2][1] = "W";
+
         f5.blocks[2][2] = "W";
- 
+
         f6 = new CubeFace("Y");
  
         f6.blocks[0][0] = "O";
@@ -132,8 +133,14 @@ public class Main {
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
         CornerSwap.SwapCorner(f1, f2, f3, f4, f5, f6);
+
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
+        s.checkBottomYellow();
+
+        System.out.println("Second layer: ");
+
+        printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
         // user chooses turn
 
