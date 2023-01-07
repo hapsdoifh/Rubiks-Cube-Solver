@@ -1,3 +1,5 @@
+package mypackages.CubeFiles;
+
 public class CornerSolution {
     public static void getCorners(CubeFace f1, CubeFace f2, CubeFace f3, CubeFace f4, CubeFace f5, CubeFace f6) {
         CubeFace[] faceList =  {f1,f2,f3,f4};

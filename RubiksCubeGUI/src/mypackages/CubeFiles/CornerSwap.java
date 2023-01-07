@@ -1,3 +1,5 @@
+package mypackages.CubeFiles;
+
 import javax.print.DocFlavor.STRING;
 
 public class CornerSwap {

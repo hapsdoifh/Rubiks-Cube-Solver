@@ -1,19 +1,22 @@
+package mypackages.CubeFiles;
+
 import java.util.Scanner;
 
 public class Main {
     static Scanner in = new Scanner(System.in);
 
-    static CubeFace f1;
-    static CubeFace f2;
-    static CubeFace f3;
-    static CubeFace f4;
-    static CubeFace f5;
-    static CubeFace f6;
-
+    public static CubeFace f1;
+    public static CubeFace f2;
+    public static CubeFace f3;
+    public static CubeFace f4;
+    public static CubeFace f5;
+    public static CubeFace f6;
+    
     static Rotate3Block r;
 
-    public static void main(String[] args) {
+    public static CubeFace[] SolveProcess() {
 
+        
         f1 = new CubeFace("G");
 
         f1.blocks[0][0] = "R";
@@ -147,6 +150,8 @@ public class Main {
 //        }
 
         // Rotate3Block r, CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f4, CubeFace f2
+        CubeFace[] FaceList = {f1,f2,f3,f4,f5,f6};
+        return FaceList;
     }
     public static void chooseTurn(String t) {
 //        System.out.println("What turn? ");
