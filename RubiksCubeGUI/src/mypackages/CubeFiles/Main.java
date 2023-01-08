@@ -1,4 +1,5 @@
 package mypackages.CubeFiles;
+import mypackages.*;
 
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Main {
     
     static Rotate3Block r;
 
-    public static CubeFace[] SolveProcess() {
+    public static CubeFace[] SolveProcess(MainPage parentFrame) {
 
         
         f1 = new CubeFace("G");
@@ -102,6 +103,7 @@ public class Main {
         f6.blocks[2][2] = "Y";
 
 
+        CubeFace[] FaceList = {f1,f2,f3,f4,f5,f6};
         r = new Rotate3Block();
 
         WhiteCross w = new WhiteCross(f1, f2, f3, f4, f5, f6);
@@ -111,46 +113,39 @@ public class Main {
         System.out.println("Original:");
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints original faces
-
+        parentFrame.updateCube(FaceList);
+        
         // solution
         w.checkWhiteCross(); // white cross phase
 
         System.out.println("White cross: ");
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints white corners faces
+        parentFrame.updateCube(FaceList);
         
         CornerSolution.getCorners(f1, f2, f3, f4, f5, f6); // white corners phase
 
         System.out.println("White corners: ");
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+        parentFrame.updateCube(FaceList);
 
         s.checkBottomYellow();
 
         System.out.println("Second layer: ");
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+        parentFrame.updateCube(FaceList);
 
         BottomCross.BCrossSolution(f1, f2, f3, f4, f5, f6);
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+        parentFrame.updateCube(FaceList);
 
         CornerSwap.SwapCorner(f1, f2, f3, f4, f5, f6);
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+        parentFrame.updateCube(FaceList);
 
 
-        // user chooses turn
-
-//        while (true) {
-//            chooseTurn(r3, f1, f5, f6, f3, f4, f2);
-//            System.out.println("Stop? ");
-//            String stop = in.nextLine();
-//            if (stop.equals("y")) {
-//                printFaces(f1, f5, f6, f3, f2, f4); // prints faces after each turn
-//            }
-//        }
-
-        // Rotate3Block r, CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f4, CubeFace f2
-        CubeFace[] FaceList = {f1,f2,f3,f4,f5,f6};
         return FaceList;
     }
     public static void chooseTurn(String t) {

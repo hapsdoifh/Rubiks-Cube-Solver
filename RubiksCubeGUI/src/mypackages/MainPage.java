@@ -33,7 +33,6 @@ public class MainPage extends javax.swing.JFrame {
    
     public MainPage() {
         initComponents();
-        FaceList = Main.SolveProcess();
     }
 
     /**
@@ -216,6 +215,25 @@ public class MainPage extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        FaceList = Main.SolveProcess(this);
+//        javax.swing.JPanel[] PanelList={jPanel1,jPanel2,jPanel3,jPanel4,jPanel5,jPanel6};
+//        for(int i = 0; i<6; i++){
+//            grphics = (Graphics2D)PanelList[i].getGraphics();
+//            int incre = PanelList[i].getSize().height/3;
+//            for(int y = 0; y<3; y++){
+//                for(int x = 0; x<3; x++){                    
+//                    int[] Bclr = TextToRGB(FaceList[i].blocks[y][x]);
+//                    grphics.setColor(new Color(Bclr[0],Bclr[1],Bclr[2]));
+//                    grphics.fillRect(x*incre, y*incre,incre+1,incre+1);
+//                    grphics.setColor(new Color(0,0,0)); 
+//                    grphics.drawRect(x*incre, y*incre,incre+1,incre+1);
+//                }           
+//            }             
+//        }
+    }//GEN-LAST:event_jButton1MouseClicked
+    
+    public void updateCube(CubeFace[] FaceList){
+        
         javax.swing.JPanel[] PanelList={jPanel1,jPanel2,jPanel3,jPanel4,jPanel5,jPanel6};
         for(int i = 0; i<6; i++){
             grphics = (Graphics2D)PanelList[i].getGraphics();
@@ -223,18 +241,20 @@ public class MainPage extends javax.swing.JFrame {
             for(int y = 0; y<3; y++){
                 for(int x = 0; x<3; x++){                    
                     int[] Bclr = TextToRGB(FaceList[i].blocks[y][x]);
-                    grphics.setColor(new Color(Bclr[0],Bclr[1],Bclr[2]));                    
-                    grphics.fillRect(x*incre, y*incre, (x+1)*incre, (y+1)*incre);
+                    grphics.setColor(new Color(Bclr[0],Bclr[1],Bclr[2]));
+                    grphics.fillRect(x*incre, y*incre,incre+1,incre+1);
                     grphics.setColor(new Color(0,0,0)); 
+                    grphics.drawRect(x*incre, y*incre,incre+1,incre+1);
                 }           
-            }   
-            for(int y = 0; y<4; y++){
-                grphics.drawLine(y*incre, 0, y*incre, incre*3);    
-                grphics.drawLine(0, y*incre, incre*3, y*incre);   
-            }              
+            }             
+        }        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
-    }//GEN-LAST:event_jButton1MouseClicked
-
+    }
+    
     
     public static int[] TextToRGB(String Color){
         int[] rgb = {0,0,0};
