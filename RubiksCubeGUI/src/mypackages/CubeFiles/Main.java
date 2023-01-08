@@ -12,12 +12,12 @@ public class Main {
     public static CubeFace f4;
     public static CubeFace f5;
     public static CubeFace f6;
-    
+    static MainPage GUIref;
     static Rotate3Block r;
 
     public static CubeFace[] SolveProcess(MainPage parentFrame) {
 
-        
+        GUIref = parentFrame;
         f1 = new CubeFace("G");
 
         f1.blocks[0][0] = "R";
@@ -153,6 +153,7 @@ public class Main {
 //        String turn = in.nextLine();
 
         String turn = t;
+        CubeFace[] FaceList = {f1,f2,f3,f4,f5,f6};
 
         if (turn.equals("R") || turn.equals("RP") || turn.equals("L") || turn.equals("LP") || turn.equals("M") || turn.equals("MP")) {
             switch (turn) {
@@ -251,7 +252,8 @@ public class Main {
             r.turnFace(f5, 3);
             r.turnFace(f6, 1);
         }
-
+        GUIref.updateCube(FaceList);
+        
     }
 
     public static void printFaces(CubeFace f1, CubeFace f5, CubeFace f6, CubeFace f3, CubeFace f2, CubeFace f4) {
