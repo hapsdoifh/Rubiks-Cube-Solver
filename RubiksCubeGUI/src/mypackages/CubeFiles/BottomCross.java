@@ -3,8 +3,9 @@ package mypackages.CubeFiles;
 import java.util.regex.MatchResult;
 
 import javax.print.attribute.standard.Sides;
-
 public class BottomCross {
+    
+
     static int[] Rows = {0,1,2,1};
     static int[] Cols = {1,2,1,0};
     public static void BCrossSolution(CubeFace f1,CubeFace f2,CubeFace f3,CubeFace f4,CubeFace f5,CubeFace f6){
