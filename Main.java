@@ -106,6 +106,8 @@ public class Main {
 
         SecondLayer s = new SecondLayer(f1, f2, f3, f4, f5, f6);
 
+        MatchColors m = new MatchColors(f1, f2, f3, f4, f5, f6);
+
         System.out.println("Original:");
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints original faces
@@ -132,13 +134,17 @@ public class Main {
         BottomCross.BCrossSolution(f1, f2, f3, f4, f5, f6);
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
-        CornerSwap.SwapCorner(f1, f2, f3, f4, f5, f6);
-
-        printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
-
         s.checkBottomYellow();
 
         System.out.println("Second layer: ");
+
+        printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+
+        m.checkColor();
+
+        printFaces(f1, f5, f6, f3, f2, f4); // prints faces for matching colors
+
+        CornerSwap.SwapCorner(f1, f2, f3, f4, f5, f6);
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
