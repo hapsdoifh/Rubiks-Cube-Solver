@@ -31,9 +31,9 @@ public class CornerSwap {
                     BottomAlgo(ca);
                     break;
                 }
-            }    
-
+            }   
         }
+        
     }
 
     public static boolean IsGoodCorner(String corner, String faces){

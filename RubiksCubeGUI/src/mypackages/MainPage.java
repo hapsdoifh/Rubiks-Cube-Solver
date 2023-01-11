@@ -25,7 +25,7 @@ public class MainPage extends javax.swing.JFrame {
     public CubeFace F5;
     public CubeFace F6;
     public CubeFace[] FaceList = {F1,F2,F3,F4,F5,F6};    
-    public static int sped = 1000;
+    public static int sped = 4;
     
     Graphics2D grphics; 
    
