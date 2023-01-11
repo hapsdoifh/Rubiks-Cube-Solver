@@ -1,6 +1,9 @@
+package mypackages.CubeFiles;
+
 public class CornerSolution {
     public static void getCorners(CubeFace f1, CubeFace f2, CubeFace f3, CubeFace f4, CubeFace f5, CubeFace f6) {
         CubeFace[] faceList =  {f1,f2,f3,f4};
+        CubeFace[] DisplayFaceList = {f1,f2,f3,f4,f5,f6};
         //int targets[][] = {{0,0},{0,2},{2,0},{2,2}};
         int targets[][] = {{2,2},{0,2},{0,0},{2,0}};
         int corner = 0;
@@ -38,19 +41,23 @@ public class CornerSolution {
                     }
                     Rotate3Block.turnFace(f6, 4-k);
                     while(faceList[k].blocks[2][2-side] != adjCols[0] || faceList[white].blocks[2][side] !="W" || f6.blocks[0][2-side] != adjCols[1]){
-                        Main.chooseTurn(move);
+                        Main.chooseTurn(move);                         
                     }
                     
                     Rotate3Block.turnFace(f6, k);
     
                     Main.chooseTurn(move);
-                    Main.chooseTurn(convertMove(k)[side]);                    
+                     
+                    Main.chooseTurn(convertMove(k)[side]);                     
+                     
                     Main.chooseTurn(rmove);
+                     
                     if(convertMove(k)[side].length() == 2){
                         Main.chooseTurn(convertMove(k)[side].charAt(0)+"");
                     }else{
                         Main.chooseTurn(convertMove(k)[side]+"P");
                     }
+                     
                     corner ++;
                     Main.printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
                     break;

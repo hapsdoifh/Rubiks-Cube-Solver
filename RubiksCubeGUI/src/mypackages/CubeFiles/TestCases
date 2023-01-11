@@ -1,0 +1,32 @@
+package mypackages.CubeFiles;
+
+        //TEST CASE 1:
+        printFaces(f1, f5, f6, f3, f2, f4);
+        turnColumn(f1, f5, f6, f3, 2, 0);//turn R
+        turnColumn(f1, f6, f5, f3,  0, 2); //turn L
+        printFaces(f1, f5, f6, f3, f2, f4);
+        turnColumn(f1, f5, f6, f3,  0, 2); //turn L'
+        turnColumn(f1, f6, f5, f3,  2, 0); //turn R'
+        turnColumn(f1, f6, f5, f3, 1, 1); //turn M
+        turnColumn(f1, f5, f6, f3, 1, 1); //turn M'
+        turnFace(f5, 4);
+
+        printFaces(f1, f5, f6, f3, f2, f4);
+
+        //TEST CASE 2:
+        //re-adjustments
+        turnFace(f5, 1); // turns entire face clockwise
+        turnFace(f6, 3); // turns entire face counter-clockwise
+
+        //actual turn
+        turnColumn(f2, f5, f6, f4, 2, 0); // turn B
+        turnFace(f3, 1);
+        turnColumn(f2, f6, f5, f4, 2, 0); // turn B'
+        turnFace(f3, 3);
+
+        turnColumn(f2, f5, f6, f4, 0, 2); // turn F'
+        turnFace(f1, 3);
+
+        //re-adjustments
+        turnFace(f5, 3);
+        turnFace(f6, 1);

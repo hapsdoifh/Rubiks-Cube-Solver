@@ -1,3 +1,6 @@
+package mypackages.CubeFiles;
+
+
 public class WhiteCross {
 
     static CubeFace f1;
