@@ -267,7 +267,8 @@ public class MainPage extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        FaceList = Main.SolveProcess(this);
+        FaceList = Main.SolveProcess(this);        
+        Main.InitCube(this);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

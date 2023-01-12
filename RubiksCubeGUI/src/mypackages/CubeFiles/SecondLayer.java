@@ -54,6 +54,7 @@ public class SecondLayer {
     }
     public static void checkBottomYellow() {
 
+        flag = false;
         while (flag==false) {
 
             if (!f6.blocks[0][1].equals("Y") && !f1.blocks[2][1].equals("Y")) {

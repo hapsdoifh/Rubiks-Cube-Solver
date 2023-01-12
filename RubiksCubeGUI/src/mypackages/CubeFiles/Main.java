@@ -47,7 +47,7 @@ public class Main {
         parentFrame.updateCube(FaceList);
         
         // solution
-        w.checkWhiteCross(); // white cross phase
+        WhiteCross.checkWhiteCross(); // white cross phase
         System.out.println("White cross: ");
         printFaces(f1, f5, f6, f3, f2, f4); // prints white corners faces
         
@@ -55,7 +55,7 @@ public class Main {
         System.out.println("White corners: ");
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
-        s.checkBottomYellow();
+        SecondLayer.checkBottomYellow();
         System.out.println("Second layer: ");
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
         parentFrame.updateCube(FaceList);
