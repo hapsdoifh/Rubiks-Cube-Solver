@@ -80,14 +80,6 @@ public class Main {
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
       
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        System.out.println("FINAL STAGE!!!");
-        MainPage.sped = 1000;
-        
         c.checkBottomYellow();
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
