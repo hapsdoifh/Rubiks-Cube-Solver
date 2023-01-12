@@ -18,7 +18,34 @@ public class SolvingCube {
 
     }
 
-    public void checkBottomYellow() {
+    public void checkSolvedCube() {
+
+        CubeFace[] faces = {f1, f2, f3, f4, f5, f6};
+        int counter = 0;
+
+        for (int i = 0; i < 6; i++) {
+
+            for (int j = 0; j < 3; j++) {
+
+                for (int k = 0; k < 3; k++) {
+
+                    if ((faces[i]).blocks[j][k].equals((faces[i]).blocks[1][1])) {
+                        counter++;
+                    }
+
+                }
+
+            }
+
+        }
+
+        if (counter != 54) {
+            checkBottomYellow();
+        }
+
+    }
+
+    public static void checkBottomYellow() {
 
         int counter = 0;
 
@@ -27,22 +54,43 @@ public class SolvingCube {
 
             if (f6.blocks[0][0].equals("Y")) {
                 counter++;
-                Main.chooseTurn("UP");
+                Main.chooseTurn("UP"); // fourth turn
                 Main.chooseTurn("D");
             } else {
                 Main.chooseTurn("UP");
             }
 
-            if (counter==3) {
+            if (counter==4) {
                 System.out.println("BREAK!");
                 break;
             }
 
         }
 
-        Main.chooseTurn("D");
 
+        switch (f1.blocks[1][1]) {
+            case "G":
+                rHM(0);
+                break;
+            case "R":
+                rHM(1);
+                break;
+            case "B":
+                rHM(2);
+                break;
+            case "O":
+                rHM(3);
+                break;
 
+        }
+
+    }
+    
+public static void rHM(int num) {
+
+        for (int i = 0 ; i < num; i++) {
+            Main.chooseTurn("D");
+        }
     }
 
     //right hand move
