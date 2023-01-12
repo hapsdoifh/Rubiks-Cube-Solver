@@ -4,6 +4,7 @@
  */
 package mypackages;
 import mypackages.*;
+import java.util.*;
 import java.awt.*;
 import mypackages.CubeFiles.CubeFace;
 import mypackages.CubeFiles.Main;
@@ -168,7 +169,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Enter Move");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -267,6 +268,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        Main.TurnRecord = new ArrayList<CubeFace[]>();
         FaceList = Main.SolveProcess(this);        
         Main.InitCube(this);
     }//GEN-LAST:event_jButton1MouseClicked

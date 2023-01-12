@@ -2,7 +2,7 @@ package mypackages.CubeFiles;
 import mypackages.*;
 
 import java.util.Scanner;
-import static mypackages.MainPage.sped;
+import java.util.*;
 
 public class Main {
     static Scanner in = new Scanner(System.in);
@@ -15,6 +15,8 @@ public class Main {
     public static CubeFace f6;
     static MainPage GUIref;
     static Rotate3Block r;
+    public static ArrayList<CubeFace[]> TurnRecord = new ArrayList<CubeFace[]>();
+    
     public static void InitCube(MainPage parentFrame){
         GUIref = parentFrame;
         f1 = new CubeFace("G"); 
@@ -88,6 +90,19 @@ public class Main {
 
         return FaceList;
     }
+    
+    public static void CopyCube(CubeFace[] dest, CubeFace[] src){
+        for(int i =0; i<6; i++){
+            dest[i] = new CubeFace("0");
+            for(int y = 0; i<3; y++){
+                for(int x = 0; x<3; x++){
+                    dest[i].blocks[y][x] = src[i].blocks[y][x];
+                }
+            }
+        }
+        
+    }
+    
     public static void chooseTurn(String t) {
 //        System.out.println("What turn? ");
 //        String turn = in.nextLine();
@@ -192,7 +207,10 @@ public class Main {
             r.turnFace(f5, 3);
             r.turnFace(f6, 1);
         }
-        GUIref.updateCube(FaceList);
+        CubeFace[] temp = new CubeFace[6];
+        CopyCube(temp,FaceList);
+        TurnRecord.add(temp);
+        //GUIref.updateCube(FaceList);
         
     }
 
