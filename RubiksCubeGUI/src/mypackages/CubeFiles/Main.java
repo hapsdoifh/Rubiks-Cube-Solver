@@ -13,6 +13,7 @@ public class Main {
     public static CubeFace f4;
     public static CubeFace f5;
     public static CubeFace f6;
+    public static CubeFace[] FaceList = new CubeFace[6];
     static MainPage GUIref;
     static Rotate3Block r;
     public static ArrayList<CubeFace[]> TurnRecord = new ArrayList<CubeFace[]>();
@@ -25,14 +26,19 @@ public class Main {
         f4 = new CubeFace("O");
         f5 = new CubeFace("W");
         f6 = new CubeFace("Y");
+        FaceList[0] = f1;        
+        FaceList[1] = f2;
+        FaceList[2] = f3;
+        FaceList[3] = f4;
+        FaceList[4] = f5;
+        FaceList[5] = f6;
     }
 
 
     public static CubeFace[] SolveProcess(MainPage parentFrame) {
-
+        
         GUIref = parentFrame;
         
-        CubeFace[] FaceList = {f1,f2,f3,f4,f5,f6};
         r = new Rotate3Block();
 
         WhiteCross w = new WhiteCross(f1, f2, f3, f4, f5, f6);
@@ -46,7 +52,7 @@ public class Main {
         System.out.println("Original:");
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints original faces
-        parentFrame.updateCube(FaceList);
+        //parentFrame.updateCube(FaceList);
         
         // solution
         WhiteCross.checkWhiteCross(); // white cross phase
@@ -60,11 +66,11 @@ public class Main {
         SecondLayer.checkBottomYellow();
         System.out.println("Second layer: ");
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
-        parentFrame.updateCube(FaceList);
+        //parentFrame.updateCube(FaceList);
 
         BottomCross.BCrossSolution(f1, f2, f3, f4, f5, f6);
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
-        parentFrame.updateCube(FaceList);
+        //parentFrame.updateCube(FaceList);
 
         s.checkBottomYellow();
 
@@ -94,7 +100,7 @@ public class Main {
     public static void CopyCube(CubeFace[] dest, CubeFace[] src){
         for(int i =0; i<6; i++){
             dest[i] = new CubeFace("0");
-            for(int y = 0; i<3; y++){
+            for(int y = 0; y<3; y++){
                 for(int x = 0; x<3; x++){
                     dest[i].blocks[y][x] = src[i].blocks[y][x];
                 }
@@ -200,7 +206,6 @@ public class Main {
                     break;
                 case "SP":
                     r.turnColumn(f2, f5, f6, f3, 1, 1); // turn S'
-                    break;
 
             }
 
