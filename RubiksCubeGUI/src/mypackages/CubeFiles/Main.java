@@ -131,12 +131,12 @@ public class Main {
                     r.turnColumn(f1, f5, f6, f3, 0, 2); //turn L'
                     r.turnFace(f4, 3);
                     break;
-                case "M":
-                    r.turnColumn(f1, f6, f5, f3, 1, 1); //turn M
-                    break;
-                case "MP":
-                    r.turnColumn(f1, f5, f6, f3, 1, 1); //turn M'
-                    break;
+//                case "M":
+//                    r.turnColumn(f1, f6, f5, f3, 1, 1); //turn M
+//                    break;
+//                case "MP":
+//                    r.turnColumn(f1, f5, f6, f3, 1, 1); //turn M'
+//                    break;
             }
 
         } else if (turn.equals("U") || turn.equals("UP") || turn.equals("D") || turn.equals("DP") || turn.equals("E") || turn.equals("EP")) {
@@ -163,12 +163,12 @@ public class Main {
                     r.turnColumn(f1, f4, f2, f3, 0, 2); //turn D'
                     r.turnFace(f6, 3);
                     break;
-                case "E":
-                    r.turnColumn(f1, f2, f4, f3, 1, 1); //turn E
-                    break;
-                case "EP":
-                    r.turnColumn(f1, f4, f2, f3, 1, 1); //turn E'
-                    break;
+//                case "E":
+//                    r.turnColumn(f1, f2, f4, f3, 1, 1); //turn E
+//                    break;
+//                case "EP":
+//                    r.turnColumn(f1, f4, f2, f3, 1, 1); //turn E'
+//                    break;
             }
 
             r.turnFace(f1, 3);
@@ -198,11 +198,11 @@ public class Main {
                     r.turnColumn(f2, f5, f6, f4, 0, 2); // turn F'
                     r.turnFace(f1, 3);
                     break;
-                case "S":
-                    r.turnColumn(f2, f6, f5, f3, 1, 1); // turn S
-                    break;
-                case "SP":
-                    r.turnColumn(f2, f5, f6, f3, 1, 1); // turn S'
+//                case "S":
+//                    r.turnColumn(f2, f6, f5, f3, 1, 1); // turn S
+//                    break;
+//                case "SP":
+//                    r.turnColumn(f2, f5, f6, f3, 1, 1); // turn S'
 
             }
 

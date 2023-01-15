@@ -22,13 +22,13 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form MainPage
      */
-    public CubeFace F1;
-    public CubeFace F2;
-    public CubeFace F3;
-    public CubeFace F4;
-    public CubeFace F5;
-    public CubeFace F6;
-    public CubeFace[] FaceList = {F1,F2,F3,F4,F5,F6}; 
+//    public CubeFace F1;
+//    public CubeFace F2;
+//    public CubeFace F3;
+//    public CubeFace F4;
+//    public CubeFace F5;
+//    public CubeFace F6;
+//    public CubeFace[] FaceList = {F1,F2,F3,F4,F5,F6}; 
     public static boolean isSolving = false;
     public static int time = 0;
     public static int faceIncr = 0;
@@ -218,6 +218,14 @@ public class MainPage extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(179, 230, 255));
         jButton1.setForeground(new java.awt.Color(153, 0, 51));
@@ -306,8 +314,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
-        // TODO add your handling code here:
-        updateCube(Main.FaceList);
+        // TODO add your handling code here:        
     }//GEN-LAST:event_jPanel2ComponentShown
 
     
@@ -316,8 +323,9 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         Main.TurnRecord = new ArrayList<CubeFace[]>();
         faceIncr = 0;
-        FaceList = Main.SolveProcess();   
+        Main.SolveProcess();
         isSolving = true;
+        timer.start();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -345,6 +353,19 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here: 
         updateCube(Main.FaceList);
     }//GEN-LAST:event_formWindowOpened
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:     
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:   
+        int k = evt.getKeyCode();
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){            
+            Main.chooseTurn(jTextField1.getText());
+            updateCube(Main.FaceList);
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
     
     public void updateCube(CubeFace[] FaceList){
         
