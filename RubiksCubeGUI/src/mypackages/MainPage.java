@@ -62,6 +62,8 @@ public class MainPage extends javax.swing.JFrame {
         jSlider1 = new javax.swing.JSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 153, 204));
+        setForeground(java.awt.Color.cyan);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.addComponentListener(new java.awt.event.ComponentAdapter() {
