@@ -16,95 +16,99 @@ public class Main {
 
         f1 = new CubeFace("G");
 
-        f1.blocks[0][0] = "R";
-        f1.blocks[0][1] = "R";
-        f1.blocks[0][2] = "B";
+        f1.blocks[0][0] = "O";
+        f1.blocks[0][1] = "Y";
+        f1.blocks[0][2] = "W";
  
-        f1.blocks[1][0] = "B";
+        f1.blocks[1][0] = "O";
         f1.blocks[1][1] = "G";
         f1.blocks[1][2] = "Y";
  
         f1.blocks[2][0] = "B";
-        f1.blocks[2][1] = "R";
+        f1.blocks[2][1] = "G";
         f1.blocks[2][2] = "W";
  
         f2 = new CubeFace("R");
  
         f2.blocks[0][0] = "O";
-        f2.blocks[0][1] = "G";
-        f2.blocks[0][2] = "Y";
+        f2.blocks[0][1] = "O";
+        f2.blocks[0][2] = "G";
 
         f2.blocks[1][0] = "O";
         f2.blocks[1][1] = "R";
-        f2.blocks[1][2] = "B";
+        f2.blocks[1][2] = "O";
  
-        f2.blocks[2][0] = "G";
-        f2.blocks[2][1] = "B";
-        f2.blocks[2][2] = "R";
+        f2.blocks[2][0] = "R";
+        f2.blocks[2][1] = "R";
+        f2.blocks[2][2] = "Y";
  
         f3 = new CubeFace("B");
  
-        f3.blocks[0][0] = "G";
-        f3.blocks[0][1] = "R";
+        f3.blocks[0][0] = "Y";
+        f3.blocks[0][1] = "W";
         f3.blocks[0][2] = "B";
  
         f3.blocks[1][0] = "W";
         f3.blocks[1][1] = "B";
-        f3.blocks[1][2] = "Y";
+        f3.blocks[1][2] = "B";
  
-        f3.blocks[2][0] = "B";
-        f3.blocks[2][1] = "O";
-        f3.blocks[2][2] = "Y";
+        f3.blocks[2][0] = "O";
+        f3.blocks[2][1] = "B";
+        f3.blocks[2][2] = "B";
  
         f4 = new CubeFace("O");
  
-        f4.blocks[0][0] = "W";
-        f4.blocks[0][1] = "O";
-        f4.blocks[0][2] = "G";
+        f4.blocks[0][0] = "Y";
+        f4.blocks[0][1] = "Y";
+        f4.blocks[0][2] = "B";
  
-        f4.blocks[1][0] = "G";
+        f4.blocks[1][0] = "R";
         f4.blocks[1][1] = "O";
-        f4.blocks[1][2] = "R";
+        f4.blocks[1][2] = "B";
  
-        f4.blocks[2][0] = "G";
-        f4.blocks[2][1] = "O";
-        f4.blocks[2][2] = "Y";
+        f4.blocks[2][0] = "R";
+        f4.blocks[2][1] = "R";
+        f4.blocks[2][2] = "R";
  
         f5 = new CubeFace("W");
  
-        f5.blocks[0][0] = "R";
-        f5.blocks[0][1] = "G";
-        f5.blocks[0][2] = "O";
+        f5.blocks[0][0] = "O";
+        f5.blocks[0][1] = "R";
+        f5.blocks[0][2] = "R";
 
-        f5.blocks[1][0] = "B";
+        f5.blocks[1][0] = "G";
         f5.blocks[1][1] = "W";
-        f5.blocks[1][2] = "W";
+        f5.blocks[1][2] = "G";
  
         f5.blocks[2][0] = "W";
-        f5.blocks[2][1] = "W";
-
-        f5.blocks[2][2] = "W";
+        f5.blocks[2][1] = "B";
+        f5.blocks[2][2] = "G";
 
         f6 = new CubeFace("Y");
  
-        f6.blocks[0][0] = "O";
-        f6.blocks[0][1] = "Y";
-        f6.blocks[0][2] = "O";
+        f6.blocks[0][0] = "Y";
+        f6.blocks[0][1] = "W";
+        f6.blocks[0][2] = "G";
 
-        f6.blocks[1][0] = "W";
+        f6.blocks[1][0] = "Y";
         f6.blocks[1][1] = "Y";
-        f6.blocks[1][2] = "Y";
+        f6.blocks[1][2] = "G";
  
-        f6.blocks[2][0] = "R";
-        f6.blocks[2][1] = "G";
-        f6.blocks[2][2] = "Y";
-
+        f6.blocks[2][0] = "W";
+        f6.blocks[2][1] = "W";
+        f6.blocks[2][2] = "G";
+        // chooseTurn("FP");
+        // chooseTurn("D");
+        // chooseTurn("UP");
+        // chooseTurn("F");
 
         r = new Rotate3Block();
 
         WhiteCross w = new WhiteCross(f1, f2, f3, f4, f5, f6);
 
         SecondLayer s = new SecondLayer(f1, f2, f3, f4, f5, f6);
+
+        MatchColors m = new MatchColors(f1, f2, f3, f4, f5, f6);
 
         System.out.println("Original:");
 
@@ -130,18 +134,18 @@ public class Main {
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
 
         BottomCross.BCrossSolution(f1, f2, f3, f4, f5, f6);
+
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+
+        m.checkColor();
+
+        printFaces(f1, f5, f6, f3, f2, f4); // prints faces for matching colors
+
+        System.out.println("Corners");
 
         CornerSwap.SwapCorner(f1, f2, f3, f4, f5, f6);
 
         printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
-
-        s.checkBottomYellow();
-
-        System.out.println("Second layer: ");
-
-        printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
-
         // user chooses turn
 
 //        while (true) {
