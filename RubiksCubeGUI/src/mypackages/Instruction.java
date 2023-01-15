@@ -31,36 +31,41 @@ public class Instruction extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 0, 5));
+        setResizable(false);
 
+        jTextArea1.setBackground(new java.awt.Color(153, 230, 255));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(153, 0, 51));
         jTextArea1.setRows(5);
         jTextArea1.setText("Moves of a rubiks cube are denoted with different letters:\nU, D, L, R, F, B\n\nFacing the front face:\nU means turning the top row clockwise\nD means turning the bottom row clockwise\nL means turning the left column upwards\nR means turning the right column downwards\nF means turning the front face clockwise\nB means turning the back face clockwise\n\nAdd \"P\" to the letters to do the reverse turn");
         jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 5));
         jLabel1.setText("INSTRUCTIONS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 74, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(71, 71, 71)))
+                .addComponent(jScrollPane1)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

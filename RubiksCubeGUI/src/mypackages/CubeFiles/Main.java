@@ -18,8 +18,7 @@ public class Main {
     static Rotate3Block r;
     public static ArrayList<CubeFace[]> TurnRecord = new ArrayList<CubeFace[]>();
     
-    public static void InitCube(MainPage parentFrame){
-        GUIref = parentFrame;
+    public static void InitCube(){
         f1 = new CubeFace("G"); 
         f2 = new CubeFace("R");
         f3 = new CubeFace("B");
@@ -35,9 +34,7 @@ public class Main {
     }
 
 
-    public static CubeFace[] SolveProcess(MainPage parentFrame) {
-        
-        GUIref = parentFrame;
+    public static CubeFace[] SolveProcess() {
         
         r = new Rotate3Block();
 
@@ -215,7 +212,7 @@ public class Main {
         CubeFace[] temp = new CubeFace[6];
         CopyCube(temp,FaceList);
         TurnRecord.add(temp);
-        //GUIref.updateCube(FaceList);
+        
         
     }
 
