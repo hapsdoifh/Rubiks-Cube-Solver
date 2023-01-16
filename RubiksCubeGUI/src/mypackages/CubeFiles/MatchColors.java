@@ -51,7 +51,7 @@ public class MatchColors {
     public static void rotateToMatch(int turns) {
 
         for (int i = 0; i < turns; i++) {
-            Main.chooseTurn("D");
+            CubeModel.chooseTurn("D");
         }
     }
 
@@ -77,25 +77,25 @@ public class MatchColors {
 
         if (face.equals(f1)) {
 
-            Main.chooseTurn("L");
-            Main.chooseTurn("D");
-            Main.chooseTurn("LP");
-            Main.chooseTurn("D");
-            Main.chooseTurn("L");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("LP");
+            CubeModel.chooseTurn("L");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("LP");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("L");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("LP");
 
         } else if (face.equals(f2)) {
 
-            Main.chooseTurn("F");
-            Main.chooseTurn("D");
-            Main.chooseTurn("FP");
-            Main.chooseTurn("D");
-            Main.chooseTurn("F");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("FP");
+            CubeModel.chooseTurn("F");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("FP");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("F");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("FP");
 
         }
 
@@ -107,49 +107,49 @@ public class MatchColors {
 
         if ((f1.blocks[2][1].equals(f1.blocks[1][1])) && (f4.blocks[2][1].equals(f4.blocks[1][1]))) {
 
-            Main.chooseTurn("F");
-            Main.chooseTurn("D");
-            Main.chooseTurn("FP");
-            Main.chooseTurn("D");
-            Main.chooseTurn("F");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("FP");
+            CubeModel.chooseTurn("F");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("FP");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("F");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("FP");
 
         } else if ((f2.blocks[2][1].equals(f2.blocks[1][1])) && (f1.blocks[2][1].equals(f1.blocks[1][1]))) {
 
-            Main.chooseTurn("R");
-            Main.chooseTurn("D");
-            Main.chooseTurn("RP");
-            Main.chooseTurn("D");
-            Main.chooseTurn("R");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("RP");
+            CubeModel.chooseTurn("R");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("RP");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("R");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("RP");
 
         } else if ((f3.blocks[2][1].equals(f3.blocks[1][1])) && (f2.blocks[2][1].equals(f2.blocks[1][1]))) {
 
-            Main.chooseTurn("B");
-            Main.chooseTurn("D");
-            Main.chooseTurn("BP");
-            Main.chooseTurn("D");
-            Main.chooseTurn("B");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("BP");
+            CubeModel.chooseTurn("B");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("BP");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("B");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("BP");
 
         } else if ((f4.blocks[2][1].equals(f4.blocks[1][1])) && (f3.blocks[2][1].equals(f3.blocks[1][1]))) {
 
-            Main.chooseTurn("L");
-            Main.chooseTurn("D");
-            Main.chooseTurn("LP");
-            Main.chooseTurn("D");
-            Main.chooseTurn("L");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("DP");
-            Main.chooseTurn("LP");
+            CubeModel.chooseTurn("L");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("LP");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("L");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("DP");
+            CubeModel.chooseTurn("LP");
         } else {
-            Main.chooseTurn("D");
+            CubeModel.chooseTurn("D");
             findOppMatch();
         }
 

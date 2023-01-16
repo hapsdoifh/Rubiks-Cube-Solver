@@ -13,11 +13,11 @@ public class BottomCross {
         while(countSide(f6) < 4){
             if(countSide(f6) == 2){
                 if(f6.blocks[Rows[0]][Cols[0]] == f6.blocks[Rows[2]][Cols[2]] && f6.blocks[Rows[0]][Cols[0]] == "Y" ){
-                    Main.chooseTurn("D");                      
+                    CubeModel.chooseTurn("D");                      
                     continue;
                 }else if(!(f6.blocks[Rows[1]][Cols[1]] == f6.blocks[Rows[3]][Cols[3]] && f6.blocks[Rows[1]][Cols[1]] == "Y")){ 
                     if(!(f6.blocks[Rows[1]][Cols[1]] == f6.blocks[Rows[2]][Cols[2]] && f6.blocks[Rows[1]][Cols[1]] == "Y")){ //need 2 more turn
-                        Main.chooseTurn("D");                          
+                        CubeModel.chooseTurn("D");                          
                         continue;
                     }
                 }
@@ -26,20 +26,20 @@ public class BottomCross {
         }
         while(matchEdges(FaceList) != 4){
             while(!f4.blocks[1][1].equals(f4.blocks[2][1])){
-                Main.chooseTurn("D");                  
+                CubeModel.chooseTurn("D");                  
             }
             for(int i = 0; i<matchEdges(FaceList); i++){
-                Main.chooseTurn("DP");                  
+                CubeModel.chooseTurn("DP");                  
             }
 
             //check if the opposite sides are matched
             if(FaceList[0].blocks[1][1].equals(FaceList[0].blocks[2][1]) && FaceList[2].blocks[1][1].equals(FaceList[2].blocks[2][1]) || FaceList[1].blocks[1][1].equals(FaceList[1].blocks[2][1]) && FaceList[3].blocks[1][1].equals(FaceList[3].blocks[2][1])){
-                Main.chooseTurn("DP");                  
+                CubeModel.chooseTurn("DP");                  
             }
             Algorithm(1);
-            Main.printFaces(f1, f5, f6, f3, f2, f4);
+            CubeModel.printFaces(f1, f5, f6, f3, f2, f4);
             while(!f4.blocks[1][1].equals(f4.blocks[2][1])){
-                Main.chooseTurn("D");                  
+                CubeModel.chooseTurn("D");                  
             }
         }
     }
@@ -66,7 +66,7 @@ public class BottomCross {
     public static void Algorithm(int which){
         String[][] Turns = {{"F","L","D","LP","DP","FP"},{"L","D","LP","D","L","D","D","LP","D"}};
         for(String i : Turns[which]){
-            Main.chooseTurn(i);
+            CubeModel.chooseTurn(i);
         }
     }
 

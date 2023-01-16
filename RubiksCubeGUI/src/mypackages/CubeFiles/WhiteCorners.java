@@ -1,6 +1,6 @@
 package mypackages.CubeFiles;
 
-public class CornerSolution {
+public class WhiteCorners {
     public static void getCorners(CubeFace f1, CubeFace f2, CubeFace f3, CubeFace f4, CubeFace f5, CubeFace f6) {
         CubeFace[] faceList =  {f1,f2,f3,f4};
         CubeFace[] DisplayFaceList = {f1,f2,f3,f4,f5,f6};
@@ -41,25 +41,25 @@ public class CornerSolution {
                     }
                     Rotate3Block.turnFace(f6, 4-k);
                     while(faceList[k].blocks[2][2-side] != adjCols[0] || faceList[white].blocks[2][side] !="W" || f6.blocks[0][2-side] != adjCols[1]){
-                        Main.chooseTurn(move);                         
+                        CubeModel.chooseTurn(move);                         
                     }
                     
                     Rotate3Block.turnFace(f6, k);
     
-                    Main.chooseTurn(move);
+                    CubeModel.chooseTurn(move);
                      
-                    Main.chooseTurn(convertMove(k)[side]);                     
+                    CubeModel.chooseTurn(convertMove(k)[side]);                     
                      
-                    Main.chooseTurn(rmove);
+                    CubeModel.chooseTurn(rmove);
                      
                     if(convertMove(k)[side].length() == 2){
-                        Main.chooseTurn(convertMove(k)[side].charAt(0)+"");
+                        CubeModel.chooseTurn(convertMove(k)[side].charAt(0)+"");
                     }else{
-                        Main.chooseTurn(convertMove(k)[side]+"P");
+                        CubeModel.chooseTurn(convertMove(k)[side]+"P");
                     }
                      
                     corner ++;
-                    Main.printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
+                    CubeModel.printFaces(f1, f5, f6, f3, f2, f4); // prints new faces
                     break;
                 }
             }
@@ -77,7 +77,7 @@ public class CornerSolution {
                         for(targ = 0; targ<4; targ++){
                             if(!f5.blocks[targets[targ][0]][targets[targ][1]].equals("W") ){ //choose first block not filled
                                 while(!f6.blocks[targets[targ][0]][2-targets[targ][1]].equals("W")){
-                                    Main.chooseTurn("D");
+                                    CubeModel.chooseTurn("D");
                                 }
                                 break;
                             }
@@ -85,24 +85,24 @@ public class CornerSolution {
                     Rotate3Block.turnFace(f6,2);//rotate it back 90
                     switch(targ){
                         case 0:
-                            Main.chooseTurn("RP");
-                            Main.chooseTurn("D");
-                            Main.chooseTurn("R");
+                            CubeModel.chooseTurn("RP");
+                            CubeModel.chooseTurn("D");
+                            CubeModel.chooseTurn("R");
                             continue;
                         case 1:
-                            Main.chooseTurn("BP");
-                            Main.chooseTurn("D");
-                            Main.chooseTurn("B");
+                            CubeModel.chooseTurn("BP");
+                            CubeModel.chooseTurn("D");
+                            CubeModel.chooseTurn("B");
                             continue;
                         case 2:
-                            Main.chooseTurn("B");
-                            Main.chooseTurn("DP");
-                            Main.chooseTurn("BP");
+                            CubeModel.chooseTurn("B");
+                            CubeModel.chooseTurn("DP");
+                            CubeModel.chooseTurn("BP");
                             continue;
                         case 3:
-                            Main.chooseTurn("L");
-                            Main.chooseTurn("DP");
-                            Main.chooseTurn("LP");   
+                            CubeModel.chooseTurn("L");
+                            CubeModel.chooseTurn("DP");
+                            CubeModel.chooseTurn("LP");   
                             continue;
                         default:
                             continue;                       
@@ -114,14 +114,14 @@ public class CornerSolution {
             if(i == 4){        
                 for(i = 0; i<4; i++){
                     if(faceList[i].blocks[0][2].equals("W")){
-                        Main.chooseTurn(TopConvert(i));
-                        Main.chooseTurn("D");
-                        Main.chooseTurn(TopConvert(i)+"P");
+                        CubeModel.chooseTurn(TopConvert(i));
+                        CubeModel.chooseTurn("D");
+                        CubeModel.chooseTurn(TopConvert(i)+"P");
                         break;
                     }else if(faceList[i].blocks[0][1].equals("W")){
-                        Main.chooseTurn(TopConvert(i)+"P");
-                        Main.chooseTurn("D");
-                        Main.chooseTurn(TopConvert(i));
+                        CubeModel.chooseTurn(TopConvert(i)+"P");
+                        CubeModel.chooseTurn("D");
+                        CubeModel.chooseTurn(TopConvert(i));
                         break;
                     }                
                 } 
@@ -130,23 +130,23 @@ public class CornerSolution {
             if(i==4){
                 for(i = 0; i<4; i++){
                     if(!f1.blocks[0][0].equals(f1.blocks[0][1])){
-                        Main.chooseTurn("L");
-                        Main.chooseTurn("D");
-                        Main.chooseTurn("LP");
+                        CubeModel.chooseTurn("L");
+                        CubeModel.chooseTurn("D");
+                        CubeModel.chooseTurn("LP");
                         for(int fix = 0; fix<i; fix++){
-                            Main.chooseTurn("U");
+                            CubeModel.chooseTurn("U");
                         }
                         break;
                     }else if(faceList[i].blocks[0][1].equals("W")){
-                        Main.chooseTurn("RP");
-                        Main.chooseTurn("DP");
-                        Main.chooseTurn("R");
+                        CubeModel.chooseTurn("RP");
+                        CubeModel.chooseTurn("DP");
+                        CubeModel.chooseTurn("R");
                         for(int fix = 0; fix<i; fix++){
-                            Main.chooseTurn("U");
+                            CubeModel.chooseTurn("U");
                         }
                         break;
                     }    
-                    Main.chooseTurn("UP");
+                    CubeModel.chooseTurn("UP");
                 }
             }
             if(i == 4){ //nothing to do
@@ -155,7 +155,7 @@ public class CornerSolution {
         }
     }
 
-    public static String TopConvert(int pos){
+    private static String TopConvert(int pos){
         switch(pos){
             case 0:
                 return "F";
@@ -170,7 +170,7 @@ public class CornerSolution {
         }
     }
 
-    public static String[] convertMove(int pos){
+    private static String[] convertMove(int pos){
         String[] move = {"","_",""};
         switch(pos){
             case 0:

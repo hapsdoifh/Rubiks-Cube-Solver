@@ -54,10 +54,10 @@ public class SolvingCube {
 
             if (f6.blocks[0][0].equals("Y")) {
                 counter++;
-                Main.chooseTurn("UP"); // fourth turn
-                Main.chooseTurn("D");
+                CubeModel.chooseTurn("UP"); // fourth turn
+                CubeModel.chooseTurn("D");
             } else {
-                Main.chooseTurn("UP");
+                CubeModel.chooseTurn("UP");
             }
 
             if (counter==4) {
@@ -89,7 +89,7 @@ public class SolvingCube {
 public static void rHM(int num) {
 
         for (int i = 0 ; i < num; i++) {
-            Main.chooseTurn("D");
+            CubeModel.chooseTurn("D");
         }
     }
 
@@ -97,9 +97,9 @@ public static void rHM(int num) {
 
     public static void rightHM1() {
 
-        Main.chooseTurn("F");
-        Main.chooseTurn("U");
-        Main.chooseTurn("FP");
+        CubeModel.chooseTurn("F");
+        CubeModel.chooseTurn("U");
+        CubeModel.chooseTurn("FP");
 
     }
 

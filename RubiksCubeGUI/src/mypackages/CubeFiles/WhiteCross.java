@@ -107,35 +107,35 @@ public class WhiteCross {
 
     public static void moveTopToBottom() {
         if (f5.blocks[0][1].equals("W")) {
-            Main.chooseTurn("B");
-            Main.chooseTurn("B");
-            Main.chooseTurn("D");
-            Main.chooseTurn("BP");
-            Main.chooseTurn("BP");
+            CubeModel.chooseTurn("B");
+            CubeModel.chooseTurn("B");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("BP");
+            CubeModel.chooseTurn("BP");
         }
 
         if (f5.blocks[1][0].equals("W")) {
-            Main.chooseTurn("L");
-            Main.chooseTurn("L");
-            Main.chooseTurn("D");
-            Main.chooseTurn("LP");
-            Main.chooseTurn("LP");
+            CubeModel.chooseTurn("L");
+            CubeModel.chooseTurn("L");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("LP");
+            CubeModel.chooseTurn("LP");
         }
 
         if (f5.blocks[1][2].equals("W")) {
-            Main.chooseTurn("R");
-            Main.chooseTurn("R");
-            Main.chooseTurn("D");
-            Main.chooseTurn("RP");
-            Main.chooseTurn("RP");
+            CubeModel.chooseTurn("R");
+            CubeModel.chooseTurn("R");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("RP");
+            CubeModel.chooseTurn("RP");
         }
 
         if (f5.blocks[2][1].equals("W")) {
-            Main.chooseTurn("F");
-            Main.chooseTurn("F");
-            Main.chooseTurn("D");
-            Main.chooseTurn("FP");
-            Main.chooseTurn("FP");
+            CubeModel.chooseTurn("F");
+            CubeModel.chooseTurn("F");
+            CubeModel.chooseTurn("D");
+            CubeModel.chooseTurn("FP");
+            CubeModel.chooseTurn("FP");
         }
     }
 
@@ -146,28 +146,28 @@ public class WhiteCross {
 
                 switch (face) {
                     case "f1":
-                        Main.chooseTurn("L");
-                        Main.chooseTurn("D");
-                        Main.chooseTurn("LP");
-                        Main.chooseTurn("DP");
+                        CubeModel.chooseTurn("L");
+                        CubeModel.chooseTurn("D");
+                        CubeModel.chooseTurn("LP");
+                        CubeModel.chooseTurn("DP");
                         break;
                     case "f2":
-                        Main.chooseTurn("F");
-                        Main.chooseTurn("D");
-                        Main.chooseTurn("FP");
-                        Main.chooseTurn("DP");
+                        CubeModel.chooseTurn("F");
+                        CubeModel.chooseTurn("D");
+                        CubeModel.chooseTurn("FP");
+                        CubeModel.chooseTurn("DP");
                         break;
                     case "f3":
-                        Main.chooseTurn("R");
-                        Main.chooseTurn("D");
-                        Main.chooseTurn("RP");
-                        Main.chooseTurn("DP");
+                        CubeModel.chooseTurn("R");
+                        CubeModel.chooseTurn("D");
+                        CubeModel.chooseTurn("RP");
+                        CubeModel.chooseTurn("DP");
                         break;
                     case "f4":
-                        Main.chooseTurn("B");
-                        Main.chooseTurn("D");
-                        Main.chooseTurn("BP");
-                        Main.chooseTurn("DP");
+                        CubeModel.chooseTurn("B");
+                        CubeModel.chooseTurn("D");
+                        CubeModel.chooseTurn("BP");
+                        CubeModel.chooseTurn("DP");
                         break;
 
                 }
@@ -176,28 +176,28 @@ public class WhiteCross {
 
                 switch (face) {
                     case "f1":
-                        Main.chooseTurn("RP");
-                        Main.chooseTurn("DP");
-                        Main.chooseTurn("R");
-                        Main.chooseTurn("D");
+                        CubeModel.chooseTurn("RP");
+                        CubeModel.chooseTurn("DP");
+                        CubeModel.chooseTurn("R");
+                        CubeModel.chooseTurn("D");
                         break;
                     case "f2":
-                        Main.chooseTurn("BP");
-                        Main.chooseTurn("DP");
-                        Main.chooseTurn("B");
-                        Main.chooseTurn("D");
+                        CubeModel.chooseTurn("BP");
+                        CubeModel.chooseTurn("DP");
+                        CubeModel.chooseTurn("B");
+                        CubeModel.chooseTurn("D");
                         break;
                     case "f3":
-                        Main.chooseTurn("LP");
-                        Main.chooseTurn("DP");
-                        Main.chooseTurn("L");
-                        Main.chooseTurn("D");
+                        CubeModel.chooseTurn("LP");
+                        CubeModel.chooseTurn("DP");
+                        CubeModel.chooseTurn("L");
+                        CubeModel.chooseTurn("D");
                         break;
                     case "f4":
-                        Main.chooseTurn("FP");
-                        Main.chooseTurn("DP");
-                        Main.chooseTurn("F");
-                        Main.chooseTurn("D");
+                        CubeModel.chooseTurn("FP");
+                        CubeModel.chooseTurn("DP");
+                        CubeModel.chooseTurn("F");
+                        CubeModel.chooseTurn("D");
                         break;
                 }
 
@@ -211,29 +211,29 @@ public class WhiteCross {
 
         switch (face) {
             case "f1":
-                Main.chooseTurn("F" + isPrime); //isPrime checks if the white block is in the top or bottom position
-                Main.chooseTurn("RP");
-                Main.chooseTurn("DP");
-                Main.chooseTurn("R");
+                CubeModel.chooseTurn("F" + isPrime); //isPrime checks if the white block is in the top or bottom position
+                CubeModel.chooseTurn("RP");
+                CubeModel.chooseTurn("DP");
+                CubeModel.chooseTurn("R");
                 System.out.println("Moved to bottom!");
                 break;
             case "f2":
-                Main.chooseTurn("R" + isPrime);
-                Main.chooseTurn("BP");
-                Main.chooseTurn("DP");
-                Main.chooseTurn("B");
+                CubeModel.chooseTurn("R" + isPrime);
+                CubeModel.chooseTurn("BP");
+                CubeModel.chooseTurn("DP");
+                CubeModel.chooseTurn("B");
                 break;
             case "f3":
-                Main.chooseTurn("B" + isPrime);
-                Main.chooseTurn("LP");
-                Main.chooseTurn("DP");
-                Main.chooseTurn("L");
+                CubeModel.chooseTurn("B" + isPrime);
+                CubeModel.chooseTurn("LP");
+                CubeModel.chooseTurn("DP");
+                CubeModel.chooseTurn("L");
                 break;
             case "f4":
-                Main.chooseTurn("L" + isPrime);
-                Main.chooseTurn("FP");
-                Main.chooseTurn("DP");
-                Main.chooseTurn("F");
+                CubeModel.chooseTurn("L" + isPrime);
+                CubeModel.chooseTurn("FP");
+                CubeModel.chooseTurn("DP");
+                CubeModel.chooseTurn("F");
                 break;
         }
 
@@ -351,7 +351,7 @@ public class WhiteCross {
     public static void rotateColorMatch (int num) {
 
         for (int i = 0; i < num; i++) {
-            Main.chooseTurn("D");
+            CubeModel.chooseTurn("D");
         }
 
     }
@@ -366,16 +366,16 @@ public class WhiteCross {
 
                     switch (rot_num) {
                         case 0:
-                            Main.chooseTurn("F");
+                            CubeModel.chooseTurn("F");
                             break;
                         case 1:
-                            Main.chooseTurn("R");
+                            CubeModel.chooseTurn("R");
                             break;
                         case 2:
-                            Main.chooseTurn("B");
+                            CubeModel.chooseTurn("B");
                             break;
                         case 3:
-                            Main.chooseTurn("L");
+                            CubeModel.chooseTurn("L");
                             break;
                     }
 
@@ -385,16 +385,16 @@ public class WhiteCross {
                     switch (rot_num) {
                         case 0:
                             System.out.println("Turned R!");
-                            Main.chooseTurn("R");
+                            CubeModel.chooseTurn("R");
                             break;
                         case 1:
-                            Main.chooseTurn("B");
+                            CubeModel.chooseTurn("B");
                             break;
                         case 2:
-                            Main.chooseTurn("L");
+                            CubeModel.chooseTurn("L");
                             break;
                         case 3:
-                            Main.chooseTurn("F");
+                            CubeModel.chooseTurn("F");
                             break;
                     }
 
@@ -403,16 +403,16 @@ public class WhiteCross {
 
                     switch (rot_num) {
                         case 0:
-                            Main.chooseTurn("B");
+                            CubeModel.chooseTurn("B");
                             break;
                         case 1:
-                            Main.chooseTurn("L");
+                            CubeModel.chooseTurn("L");
                             break;
                         case 2:
-                            Main.chooseTurn("F");
+                            CubeModel.chooseTurn("F");
                             break;
                         case 3:
-                            Main.chooseTurn("R");
+                            CubeModel.chooseTurn("R");
                             break;
                     }
 
@@ -421,16 +421,16 @@ public class WhiteCross {
 
                     switch (rot_num) {
                         case 0:
-                            Main.chooseTurn("L");
+                            CubeModel.chooseTurn("L");
                             break;
                         case 1:
-                            Main.chooseTurn("F");
+                            CubeModel.chooseTurn("F");
                             break;
                         case 2:
-                            Main.chooseTurn("R");
+                            CubeModel.chooseTurn("R");
                             break;
                         case 3:
-                            Main.chooseTurn("B");
+                            CubeModel.chooseTurn("B");
                             break;
                     }
 

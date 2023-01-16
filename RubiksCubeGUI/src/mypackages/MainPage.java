@@ -10,7 +10,8 @@ import java.awt.event.*;
 import java.awt.EventQueue;
 import javax.swing.*;
 import mypackages.CubeFiles.CubeFace;
-import mypackages.CubeFiles.Main;
+import mypackages.CubeFiles.CubeModel;
+import mypackages.CubeFiles.SolveCube;
 
 
 /**
@@ -22,23 +23,18 @@ public class MainPage extends javax.swing.JFrame {
     /**
      * Creates new form MainPage
      */
-//    public CubeFace F1;
-//    public CubeFace F2;
-//    public CubeFace F3;
-//    public CubeFace F4;
-//    public CubeFace F5;
-//    public CubeFace F6;
-//    public CubeFace[] FaceList = {F1,F2,F3,F4,F5,F6}; 
+    
     public static boolean isSolving = false;
     public static int time = 0;
     public static int faceIncr = 0;
     public static int sped = 10;
+    public static Timer timer;
     
     Graphics2D grphics; 
    
     public MainPage() {
         initComponents();
-        Main.InitCube();
+        CubeModel.InitCube();
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -50,13 +46,13 @@ public class MainPage extends javax.swing.JFrame {
                         }else{
                             time = 0;
                             faceIncr++;
-                            if(faceIncr<Main.TurnRecord.size() && isSolving){
-                                updateCube(Main.TurnRecord.get(faceIncr));
+                            if(faceIncr<CubeModel.TurnRecord.size() && isSolving){
+                                updateCube(CubeModel.TurnRecord.get(faceIncr));
                             }else if(isSolving ){                                
                                 timer.stop();
                                 isSolving = false;
                             }else{
-                                updateCube(Main.FaceList);
+                                updateCube(CubeModel.FaceList);
                             }
                                 
                         }
@@ -318,12 +314,11 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2ComponentShown
 
     
-    public static Timer timer;
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        Main.TurnRecord = new ArrayList<CubeFace[]>();
+        CubeModel.TurnRecord = new ArrayList<CubeFace[]>();
         faceIncr = 0;
-        Main.SolveProcess();
+        SolveCube.CompleteSolve(CubeModel.f1, CubeModel.f2, CubeModel.f3, CubeModel.f4, CubeModel.f5, CubeModel.f6);
         isSolving = true;
         timer.start();
     }//GEN-LAST:event_jButton1MouseClicked
@@ -335,8 +330,8 @@ public class MainPage extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        Main.chooseTurn(jTextField1.getText());
-        updateCube(Main.FaceList);
+        CubeModel.chooseTurn(jTextField1.getText());
+        updateCube(CubeModel.FaceList);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
@@ -346,12 +341,12 @@ public class MainPage extends javax.swing.JFrame {
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:        
-        updateCube(Main.FaceList);
+        updateCube(CubeModel.FaceList);
     }//GEN-LAST:event_formFocusGained
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here: 
-        updateCube(Main.FaceList);
+        updateCube(CubeModel.FaceList);
     }//GEN-LAST:event_formWindowOpened
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
@@ -362,8 +357,8 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:   
         int k = evt.getKeyCode();
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){            
-            Main.chooseTurn(jTextField1.getText());
-            updateCube(Main.FaceList);
+            CubeModel.chooseTurn(jTextField1.getText());
+            updateCube(CubeModel.FaceList);
         }
     }//GEN-LAST:event_jTextField1KeyPressed
     

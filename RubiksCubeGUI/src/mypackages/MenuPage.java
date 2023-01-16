@@ -4,7 +4,7 @@
  */
 package mypackages;
 import mypackages.*;
-import mypackages.CubeFiles.Main;
+import mypackages.CubeFiles.CubeModel;
 
 
 /**
@@ -116,8 +116,8 @@ public class MenuPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         MainPage ProgramPage = new MainPage();
         ProgramPage.setVisible(true);
-        Main.InitCube();
-        ProgramPage.updateCube(Main.FaceList);
+        CubeModel.InitCube();
+        ProgramPage.updateCube(CubeModel.FaceList);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

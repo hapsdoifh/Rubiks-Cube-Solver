@@ -52,7 +52,7 @@ public class CornerSwap {
         String[] Turns = {"D","L","DP","RP","D","LP","DP","R"};
         for(String s : Turns){
             String Monitor = convertTurns(s, which);
-            Main.chooseTurn(Monitor);              
+            CubeModel.chooseTurn(Monitor);              
         }
     }
 
